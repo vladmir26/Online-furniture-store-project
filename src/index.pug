@@ -1,9 +1,19 @@
 doctype html
- html 
+html 
   head
    meta(charset='UTF-8')
    meta(http-equiv='X-UA-Compatible', content='IE=edge')
    title Webpack
    meta(name='viewport', content='width=device-width, initial-scale=1')
-  body 
-    h1 работает pug
+   link(href='https://fonts.cdnfonts.com/css/clash-display', rel="stylesheet")
+   link(href='https://fonts.cdnfonts.com/css/satoshi', rel="stylesheet")
+  body
+    - var list = ['Plant pots', 'Ceramics', 'Tables', 'Chairs', 'Crockery', 'Tableware', 'Cutlery']
+    header  
+     .header__search
+     h1 Avion
+     .header__cart 
+     .header__user 
+     ul
+      each val in list 
+       li= val 

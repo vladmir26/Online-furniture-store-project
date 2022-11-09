@@ -1,2 +1,21 @@
 @import "reset.css";
 
+$font-family-first: Clash Display;
+$font-family-second: Satoshi;
+
+.header__search {
+    background-image: url('../src/img/icon-search.svg');
+    width: 16px;
+    height: 16px;
+}
+.header__cart {
+    background-image: url('../src/img/icon-cart.svg');
+    width: 16px;
+    height: 16px;
+}
+.header__user {
+    background-image: url('../src/img/icon-user.svg');
+    width: 16px;
+    height: 16px;
+}
+

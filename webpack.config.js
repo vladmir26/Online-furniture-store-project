@@ -16,7 +16,6 @@ module.exports = {
     devServer: {
         port: 3000,
         open: true,
-        hot: true,
     },
     entry: path.resolve(__dirname, 'src', 'index.js'),
     output: {
@@ -42,9 +41,6 @@ module.exports = {
         {
         test: /\.(c|sa|sc)ss$/i,
               use: [ 
-              {
-               loader: "pug-loader",
-              },
                devMode ? "style-loader" : MiniCssExtractPlugin.loader,
                "css-loader",
                "sass-loader"
