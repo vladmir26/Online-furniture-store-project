@@ -1,21 +1,80 @@
-@import "reset.css";
+@import  'scss-reset/_reset.scss';
 
-$font-family-first: Clash Display;
-$font-family-second: Satoshi;
 
-.header__search {
-    background-image: url('../src/img/icon-search.svg');
-    width: 16px;
-    height: 16px;
+$font-first: "Clash Display";
+$font-second: "Satoshi";
+
+
+.container {
+    max-width: 1650px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.header__cart {
-    background-image: url('../src/img/icon-cart.svg');
-    width: 16px;
-    height: 16px;
+.header__wrapper {
+      font-family: $font-first;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+    &__search {
+      width: 16px;
+      height: 16px;
+    }
+    &__cart {
+      width: 16px;
+      height: 16px;
+    }
+    &__user {
+      width: 16px;
+      height: 16px;
+    }
 }
-.header__user {
-    background-image: url('../src/img/icon-user.svg');
-    width: 16px;
-    height: 16px;
+
+.menu {
+    font-family: $font-second;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.inner-block {
+   background-color: #2A254B; 
+   width: 1280px;
+   height: 584px;
+   margin-left: auto;
+   margin-right: auto;
+   display: flex;
+   justify-content: space-between;
+
+}
+
+.left-content {
+   width: 760px;
+   color: #FFFF; 
+}
+
+.heading {
+   font-family: $font-first;
+   font-size: 32px;
+}
+.button {
+    background-color: rgba(249, 249, 249, 0.15);
+    color: #FFFF;
+    font-family: $font-second;
+    font-size: 16px;
+    width: 170px;
+    height: 56px;
+}
+.text {
+    font-family: $font-second;
+    font-size: 18px;
+
+}
+.first-image {
+   background-image: url('../src/img/image-first.png');
+   width: 520px;
+   height: 584px;
+   padding-left: 100px;
 }
 
