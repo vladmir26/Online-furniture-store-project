@@ -23,18 +23,21 @@ $font-second: "Satoshi";
       display: flex;
       justify-self: center;
     }
+  }   
+  
+.header__menu {
+      font-family: $font-second;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+}
+  
+
+.brand__white-wrapper {
+    padding: 40px 60px;
 }
 
-.menu {
-    font-family: $font-second;
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-}
-
-
-
-.inner-block {
+.brand__block {
    background-color: #2A254B; 
    width: 1280px;
    height: 584px;
@@ -45,16 +48,16 @@ $font-second: "Satoshi";
 
 }
 
-.left-content {
+.brand__left-content {
    width: 760px;
    color: #FFFF; 
 }
 
-.heading {
+.brand__heading {
    font-family: $font-first;
    font-size: 32px;
 }
-.button {
+.brand__button {
     background-color: rgba(249, 249, 249, 0.15);
     color: #FFFF;
     font-family: $font-second;
@@ -62,15 +65,13 @@ $font-second: "Satoshi";
     width: 170px;
     height: 56px;
 }
-.text {
+.brand__text {
     font-family: $font-second;
     font-size: 18px;
 
 }
-.first-image {
-   background-image: url('../src/img/image-first.png');
+.brand__chair-image {
    width: 520px;
    height: 584px;
-   padding-left: 100px;
 }
 
