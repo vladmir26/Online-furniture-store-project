@@ -6,7 +6,7 @@ $font-second: "Satoshi";
 
 
 .container {
-    max-width: 1650px;
+    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -19,13 +19,9 @@ $font-second: "Satoshi";
       width: 16px;
       height: 16px;
     }
-    &__cart {
-      width: 16px;
-      height: 16px;
-    }
-    &__user {
-      width: 16px;
-      height: 16px;
+    &__icons {
+      display: flex;
+      justify-self: center;
     }
 }
 
