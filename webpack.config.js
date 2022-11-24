@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const fs = require('fs.promises');
 const mode = process.env.NODE_ENV || 'development'; 
 
 const devMode = mode === 'development';
@@ -17,7 +17,7 @@ module.exports = {
         port: 3000,
         open: true,
     },
-    entry: path.resolve(__dirname, 'src', 'index.js'),
+    entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
     output: {
        path: path.resolve(__dirname, 'dist'),
        clean: true,
@@ -77,7 +77,7 @@ module.exports = {
               type: 'asset/resource',
             },
             {
-              test: /\.jsx?$/,
+              test: /\.m?js$/,
               exclude: /(node_modules|bower_components)/,
               use: {
                 loader: 'babel-loader',
