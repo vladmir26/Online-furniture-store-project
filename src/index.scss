@@ -3,27 +3,41 @@
 
 $font-first: "Clash Display";
 $font-second: "Satoshi";
+$background-first: #2A254B;
+$color-first: #FFFF;
+$background-second: rgba(249, 249, 249, 0.15);
+$color-second: #22202E;
+$color-third: #726E8D;
 
-
-.container {
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
+ body {
+      font-family: $font-first;
 }
+.container {
+      max-width: 1440px;
+      margin-left: auto;
+      margin-right: auto;
+}
+
+.link {
+      text-decoration: none;
+}
+
 .header__wrapper {
       font-family: $font-first;
       font-size: 24px;
       display: flex;
       justify-content: space-between;
-    &__search {
+
+     &__search {
       width: 16px;
       height: 16px;
-    }
-    &__icons {
+     }
+
+     &__icons {
       display: flex;
-      justify-self: center;
-    }
-  }   
+     }
+
+}   
   
 .header__menu {
       font-family: $font-second;
@@ -33,45 +47,56 @@ $font-second: "Satoshi";
 }
   
 
-.brand__white-wrapper {
-    padding: 40px 60px;
+.container__white-wrapper {
+      padding: 40px 60px;
 }
 
 .brand__block {
-   background-color: #2A254B; 
-   width: 1280px;
-   height: 584px;
-   margin-left: auto;
-   margin-right: auto;
-   display: flex;
-   justify-content: space-between;
+     background-color: $background-first; 
+     max-width: 1280px;
+     min-height: 584px;
+     margin-left: auto;
+     margin-right: auto;
+     display: flex;
+     justify-content: space-between;
 
 }
 
 .brand__left-content {
-   width: 760px;
-   color: #FFFF; 
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     padding-left: 60px;
+     width: 59.375%;
+     color: $color-first; 
 }
 
 .brand__heading {
-   font-family: $font-first;
-   font-size: 32px;
+     font-family: $font-first;
+     font-size: 32px;
 }
+
 .brand__button {
-    background-color: rgba(249, 249, 249, 0.15);
-    color: #FFFF;
-    font-family: $font-second;
-    font-size: 16px;
-    width: 170px;
-    height: 56px;
+     background-color: $background-second;
+     color: $color-first;
+     font-family: $font-second;
+     font-size: 16px;
+     width: 170px;
+     height: 56px;
+     margin-bottom: 200px;
 }
+
 .brand__text {
-    font-family: $font-second;
-    font-size: 18px;
+     font-family: $font-second;
+     font-size: 18px;
 
 }
-.brand__chair-image {
-   width: 520px;
-   height: 584px;
+
+.brand__image-wrapper {
+     width: 520px;
+}
+
+.brand__image {
+     object-fit: cover;
 }
 

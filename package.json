@@ -24,6 +24,7 @@
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
+    "copy-webpack-plugin": "^9.1.0",
     "css-loader": "^6.7.1",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
@@ -41,7 +42,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "7": "0.0.1",
     "@babel/polyfill": "^7.12.1",
     "fs.promises": "^0.1.2",
     "scss-reset": "^1.2.2"
