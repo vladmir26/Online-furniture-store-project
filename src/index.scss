@@ -8,6 +8,7 @@ $color-first: #FFFF;
 $background-second: rgba(249, 249, 249, 0.15);
 $color-second: #22202E;
 $color-third: #726E8D;
+$color-fourth: #800080;
 
  body {
       font-family: $font-first;
@@ -22,30 +23,46 @@ $color-third: #726E8D;
       text-decoration: none;
 }
 
-.header__wrapper {
+.link:hover {
+      color: $color-fourth;
+}
+
+.wrapper {
       font-family: $font-first;
       font-size: 24px;
       display: flex;
       justify-content: space-between;
+      
 
-     &__search {
-      width: 16px;
-      height: 16px;
-     }
+      &__title-link {
+        color: $color-second;
+      }
 
-     &__icons {
-      display: flex;
-     }
+      &__icons {
+        display: flex;
+      }
 
-}   
+      &__cart-link {
+        padding-right: 16px;
+      }
+}  
+
   
-.header__menu {
+.menu {
       font-family: $font-second;
       font-size: 16px;
       display: flex;
       justify-content: center;
 }
   
+.menu__link {
+      color: $color-third;
+      padding-right: 45px;
+}
+
+.menu__link:last-child {
+      padding-right: 0;
+}
 
 .container__white-wrapper {
       padding: 40px 60px;
