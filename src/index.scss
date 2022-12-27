@@ -1,19 +1,19 @@
 @import  'scss-reset/_reset.scss';
 
 
-$font-first: "Clash Display";
-$font-second: "Satoshi";
-$background-first: #2A254B;
-$color-first: #FFFF;
-$background-second: rgba(249, 249, 249, 0.15);
+$font-primary: "Clash Display";
+$font-secondary: "Satoshi";
+$background-primary: #2A254B;
+$color-primary: #FFFF;
+$background-secondary: rgba(249, 249, 249, 0.15);
 $background-third: #F9F9F9;
-$color-second: #22202E;
+$color-secondary: #22202E;
 $color-third: #726E8D;
 $color-fourth: #800080;
 
  body {
-        font-family: $font-first;
-        color: $background-first;
+        font-family: $font-primary;
+        color: $background-primary;
 }
 .container {
         max-width: 1440px;
@@ -21,8 +21,13 @@ $color-fourth: #800080;
         margin-right: auto;
 
         &__white-wrapper {
-            padding: 60px 80px;
-      }
+        padding: 60px 80px;
+        }
+
+        &__white-wrapper--color {
+        padding: 60px 80px;
+        background-color: $background-third;
+        }
 }
 
 a {
@@ -34,7 +39,7 @@ a:hover {
 }
 
 .link-icons {
-        color: #2A254B;
+        color: $background-primary;
 }
 
 .wrapper {
@@ -42,223 +47,343 @@ a:hover {
         display: flex;
         justify-content: space-between;
         padding-top: 20px;
-      
+        padding-left: 28px;
+        padding-right: 28px;
+        position: relative;
 
-      &__title-link {
-        color: $color-second;
-      }
+        &__title-link {
+        color: $color-secondary;
+        }
 
-      &__icons {
+        &__icons {
         display: flex;
-      }
+        }
 
-      &__cart-link {
+        &__cart-link {
         margin-right: 16px;
-      }
+        }
 }  
 
+.wrapper::after {
+        content: "";
+        position: absolute;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        top: 70px;
+        left: 30px;
+        right: 30px;
+        visibility: hidden;
+ }
   
 .menu {
-        font-family: $font-second;
+        font-family: $font-secondary;
         font-size: 16px;
         display: flex;
         justify-content: center;
         margin-top: 40px;
 
   
-      &__item {
-        padding-right: 45px;
-      }
+        &__item {
+          padding-right: 45px;
+        }
 
-      &__item:last-child {
-        padding-right: 0;
-      }
+        &__item:last-child {
+          padding-right: 0;
+        }
 
-      &__link {
-        color: $color-third;
-      }
+        &__link {
+          color: $color-third;
+        }
 }
 
 
 
 .brand {
       
-      &__block {
-        background-color: $background-first; 
-        min-height: 584px;
-        display: flex;
-        justify-content: space-between;
+        &__block {
+          background-color: $background-primary; 
+          min-height: 584px;
+          display: flex;
+          justify-content: space-between;
 
-      }
+        }
 
-      &__left-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 60px;
-        width: 59.375%;
-        color: $color-first; 
-      }
+        &__left-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 60px;
+          width: 59.375%;
+          color: $color-primary; 
+        }
 
-      &__heading {
-        font-size: 32px;
-      }
+        &__heading {
+          font-size: 32px;
+        }
 
-      &__button {
-        background-color: $background-second;
-        color: $color-first;
-        font-family: $font-second;
-        font-size: 16px;
-        width: 170px;
-        height: 56px;
-        margin-top: 40px;
-        margin-bottom: auto;
-      } 
+        &__button {
+          background-color: $background-secondary;
+          color: $color-primary;
+          font-family: $font-secondary;
+          font-size: 16px;
+          width: 170px;
+          height: 56px;
+          margin-top: 40px;
+          margin-bottom: auto;
+        } 
 
-      &__text {
-        font-family: $font-second;
-        font-size: 18px;
+        &__text {
+          font-family: $font-secondary;
+          font-size: 18px;
 
-      }   
+        }   
 
-      &__image-wrapper {
-        width: 40%;
-      }
+        &__image-wrapper {
+          width: 40%;
+        }
 
-      &__image {
-        object-fit: cover;
-        display: block;
-        height: 100%;
-      }
+        &__image {
+          object-fit: cover;
+          display: block;
+          height: 100%;
+        }
 
 }
 
 .advantages {
       
-      &__wrapper {
-         display: flex;
-         justify-content: space-between;
-         margin: 50px 85px 85px;
-      }
+        &__list {
+           display: flex;
+           justify-content: space-between;
+           margin-top: 50px;
+        }
 
-      &__block {
-         width: 270px;
-         height: 125px;
-      }
+        &__item {
+           width: 270px;
+           height: 125px;
+        }
 
-      &__heading {
-         font-size: 24px;
-         text-align: center;
-      }
+        &__heading {
+          font-size: 24px;
+          text-align: center;
+        }
 
-      &__title {
-         font-size: 20px;
-         padding-top: 16px;
-      } 
+        &__title {
+          font-size: 20px;
+          padding-top: 16px;
+        } 
 
-      &__text {
-         font-family: $font-second;
-         padding-top: 8px;
-      }
+        &__text {
+          font-family: $font-secondary;
+          padding-top: 8px;
+        }
 
 
 }
 
 .ceramics {
       
-      &__wrapper {
-         display: flex;
-         margin: 35px 80px;
-      }
+        &__list {
+          display: flex;
+          margin-top: 35px;
+        }
 
-      &__block {
-         padding-left: 20px;
-      }
+        &__item {
+          padding-left: 20px;
+        }
+
+        &__item:first-child {
+          padding-left: 0;
+        }
+
+        &__link {
+          color: $background-primary;
+        }
       
-      &__heading {
-         font-size: 32px;
-         margin-left: 100px; 
-      }
+        &__heading {
+          font-size: 32px; 
+        }
 
-      &__image {
+        &__image {
           width: 305px;
           height: 375px;
-      }
+        }
 
-      &__title {
+        &__title {
           font-size: 20px;
           padding-top: 24px;
-      }
+        }
 
-      &__text {
-          font-family: $font-second;
+        &__text {
+          font-family: $font-secondary;
           font-size: 18px;
           padding-top: 8px;
-      }
+        }
       
       
-      &__button {
+        &__button-link {
           background-color: $background-third;
-          color: $background-first;
-          font-family: $font-second;
+          color: $background-primary;
+          font-family: $font-secondary;
           width: 170px;
           height: 56px;
           display: block;
           margin-left: auto;
           margin-right: auto;
-      }
+          margin-top: 35px;
+        }
 
     
 }
 
 .products {
       
-      &__wrapper {
+        &__list {
           display: flex;
-          margin: 35px 80px;
-      }
+          margin-top: 35px;
+        }
 
-      &__block {
+        &__item {
           padding-left: 20px;
-      }
-      
-      &__heading {
-          font-size: 32px;
-          margin-left: 100px; 
-      }
+        }
 
-      &__image-sofa {
-          width: 630px;
+        &__item--wide {
+          flex-basis: 670px;
+        }
+
+        &__item:first-child {
+          padding-left: 0;
+        }
+
+        &__link {
+          color: $background-primary;
+        }
+     
+        &__heading {
+          font-size: 32px; 
+        }
+
+        &__image-wide {
           height: 375px;
-      }
+        }
 
-      &__image {
+        &__image {
           width: 305px;
           height: 375px;
-      }
+        }
 
-      &__title {
+        &__title {
           font-size: 20px;
           padding-top: 24px;
-      }
+        }
 
-      &__text {
-          font-family: $font-second;
+        &__text {
+          font-family: $font-secondary;
           font-size: 18px;
           padding-top: 8px;
-      }
+        }
 
-      &__button {
+        &__button-link {
           background-color: $background-third;
-          color: $background-first;
-          font-family: $font-second;
+          color: $background-primary;
+          font-family: $font-secondary;
           width: 170px;
           height: 56px;
           display: block;
           margin-left: auto;
           margin-right: auto;
-      }
+          margin-top: 35px;
+        }
 
+}
+
+.subscription {
+         
+        &__wrapper {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
+
+        &__heading {
+          font-size: 36px;
+        }
+
+        &__text {
+          width: 470px;
+          margin-left: auto;
+          margin-right: auto;
+          font-family: $font-secondary;
+          padding-top: 16px;
+        }
+
+        &__form {
+          text-align: center;
+          margin-top: 70px;
+        }
+
+        &__input {
+          width: 354px;
+          height: 56px;
+          opacity: 0.2;
+          text-indent: 30px;
+        }
+
+        &__button {
+          width: 118px;
+          height: 56px;
+          background-color: $background-primary;
+          color: $color-primary;
+          font-family: $font-secondary;
+        }
+}
+
+.brand-about {
+
+        &__wrapper {
+          display: flex;
+          height: 603px;
+        }
+
+        &__left-content {
+          display:flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 50%;
+        }
+
+        &__heading {
+          font-size: 24px;
+        }
+
+        &__text-primary {
+          font-family: $font-secondary;
+          color: #505977;
+          padding-top: 25px;
+        }
+
+        &__text-secondary {
+          font-family: $font-secondary;
+          color: #505977;
+          padding-top: 25px;
+        }
+         
+        &__top-wrapper{
+          width: 536px;
+          height: 225px;
+          padding-left: 84px;
+          padding-top: 72px;
+        }
+
+        &__button {
+          width: 150px;
+          height: 56px;
+          background-color: $background-third;
+          margin-left: 84px;
+        }
+
+        &__image-wrapper {
+          width: 50%;
+        }
 }
 
 
