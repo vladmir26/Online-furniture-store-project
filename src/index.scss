@@ -22,6 +22,7 @@ $color-fourth: #800080;
 
         &__white-wrapper {
         padding: 60px 80px;
+        background-color: $color-primary;
         }
 
         &__white-wrapper--color {
@@ -71,8 +72,7 @@ a:hover {
         top: 70px;
         left: 30px;
         right: 30px;
-        visibility: hidden;
- }
+}
   
 .menu {
         font-family: $font-secondary;
@@ -120,7 +120,7 @@ a:hover {
           font-size: 32px;
         }
 
-        &__button {
+        &__button-link {
           background-color: $background-secondary;
           color: $color-primary;
           font-family: $font-secondary;
@@ -129,7 +129,14 @@ a:hover {
           height: 56px;
           margin-top: 40px;
           margin-bottom: auto;
+          padding: 16px 32px;
+          opacity: 0.2
         } 
+
+        &__button-link:hover {
+          opacity: 1;
+          color: $color-primary;
+        }
 
         &__text {
           font-family: $font-secondary;
@@ -159,7 +166,6 @@ a:hover {
 
         &__item {
            width: 270px;
-           height: 125px;
         }
 
         &__heading {
@@ -206,6 +212,7 @@ a:hover {
         &__image {
           width: 305px;
           height: 375px;
+          object-fit: cover;
         }
 
         &__title {
@@ -269,6 +276,7 @@ a:hover {
         &__image {
           width: 305px;
           height: 375px;
+          object-fit: cover;
         }
 
         &__title {
@@ -298,7 +306,7 @@ a:hover {
 
 .subscription {
          
-        &__wrapper {
+        &__inner-wrapper {
           display: flex;
           flex-direction: column;
           text-align: center;
@@ -324,13 +332,19 @@ a:hover {
         &__input {
           width: 354px;
           height: 56px;
-          opacity: 0.2;
-          text-indent: 30px;
+          background-color: rgba(255, 255, 255, .2);
+          border: rgba(0, 0, 0, 1.2);
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        &__input::placeholder {
+          color: $background-primary;
         }
 
         &__button {
-          width: 118px;
           height: 56px;
+          padding: 16px 32px;
           background-color: $background-primary;
           color: $color-primary;
           font-family: $font-secondary;
@@ -341,13 +355,10 @@ a:hover {
 
         &__wrapper {
           display: flex;
-          height: 603px;
+          min-height: 603px;
         }
 
         &__left-content {
-          display:flex;
-          flex-direction: column;
-          justify-content: space-between;
           width: 50%;
         }
 
@@ -365,25 +376,100 @@ a:hover {
           font-family: $font-secondary;
           color: #505977;
           padding-top: 25px;
+          margin-bottom: 50px;
         }
          
         &__top-wrapper{
-          width: 536px;
-          height: 225px;
-          padding-left: 84px;
-          padding-top: 72px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          height: 100%;
+          padding: 75px;
         }
 
-        &__button {
-          width: 150px;
+        &__button-link {
           height: 56px;
           background-color: $background-third;
-          margin-left: 84px;
+          margin-top: auto;
+          padding: 16px 32px;
+          color: $background-primary;
         }
 
         &__image-wrapper {
           width: 50%;
         }
+
+        &__image {
+          height: 100%;
+          object-fit: cover;
+        }
 }
 
+.footer {
 
+        &__top-wrapper {
+          display: flex;
+          justify-content: space-between;
+          background-color: $background-primary;
+          color: $color-primary;
+          position: relative;
+        }
+
+        &__top-wrapper::before {
+          content: "";
+          position: absolute;
+          border: 1px solid #4E4D93;
+          top: 125px;
+          left: 30px;
+          right: 30px;
+        }
+
+        &__buttom-wrapper {
+          display: flex;
+          justify-content: space-between;
+          background-color: $background-primary;
+          color: $color-primary;
+        }
+
+         
+        &__item {
+          font-family: $font-secondary;
+          font-size: 14px;
+
+        }
+
+        &__link {
+          color: $color-primary;
+        }
+
+        &__input {
+          width: 509px;
+          height: 56px;
+          background: rgba(255, 255, 255, 0.15);
+          border: rgba(255, 255, 255, 0.15);
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        &__input::placeholder {
+          color: $color-primary;
+        }
+
+        &__button {
+          background-color: $color-primary;
+          width: 118px;
+          height: 56px;
+          color: $background-primary;
+          font-family: $font-secondary;
+        }
+
+        &__text {
+          font-family: $font-secondary;
+          font-size: 14px;
+        }
+
+        &__icons {
+           padding-left: 25px;
+        }
+}
