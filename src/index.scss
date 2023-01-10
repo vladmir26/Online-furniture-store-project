@@ -95,6 +95,9 @@ a:hover {
         }
 }
 
+@media  screen and (max-width: 767px) {
+        
+}
 
 
 .brand {
@@ -423,6 +426,14 @@ a:hover {
           top: 125px;
           left: 30px;
           right: 30px;
+        }
+
+        &__top-inner-wrapper {
+          width: 50%;
+        }
+
+        &__wrapper-list {
+          display: flex;
         }
 
         &__buttom-wrapper {
