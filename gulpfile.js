@@ -6,6 +6,7 @@ const gulpWebpack = require('gulp-webpack');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const browserSync = require('browser-sync').create();
+const imagemin = require('gulp-imagemin');
 
 const paths = {
     root: './dist',
@@ -22,7 +23,16 @@ const paths = {
     sripts: {
         src: './srs/*js',
         dest: './dist/'
+    },
+
+    images: {
+        src: './src/img/content-image/*',
+        src: './src/img/icons/*',
+        dest: './dist/images/content-image',
+        dest: './dist/images/icons'
+
     }
+
 }
 
 function watch() {
@@ -56,15 +66,30 @@ function styles() {
 function scripts() {
    return gulp.src(paths.sripts.src)
      .pipe(gulpWebpack(webpackConfig, webpack))
-     .pipe(gulp.dest(paths.sripts.dest));
+     .pipe(gulp.dest(paths.sripts.dest))
 }
+
+function images() {
+    return gulp.src(paths.images.src)
+         .pipe(imagemin())
+         .pipe(gulp.dest(paths.images.dest))
+}
+
 
 exports.templates = templates;
 exports.styles = styles;
 exports.scripts = scripts;
+exports.images = images;
 
-gulp.task('default', gulp.series(
-    gulp.parallel(styles, templates),
+gulp.task('default', () => 
+    gulp.src('img/*')
+       .pipe(imagemin())
+       .pipe(gulp.dest('dist/assets'))
+)
+
+gulp.task('default', 
+    gulp.series(
+    gulp.parallel(styles, templates, images),
     gulp.parallel(watch, server)
 ));
 
