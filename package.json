@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/vladmir26/webpack-project#readme",
   "devDependencies": {
-    "7": "^0.0.1",
+    "del": "^6.0.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-next": "^1.0.9",
     "gulp-pug": "^5.0.0",

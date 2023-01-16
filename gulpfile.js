@@ -7,6 +7,7 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
+const del = require('del');
 
 const paths = {
     root: './dist',
@@ -27,10 +28,12 @@ const paths = {
 
     images: {
         src: './src/img/content-image/*',
-        src: './src/img/icons/*',
         dest: './dist/images/content-image',
-        dest: './dist/images/icons'
+    },
 
+    icons: {
+        src: './src/img/icons/*', 
+        dest: './dist/images/icons',
     }
 
 }
@@ -45,6 +48,10 @@ function server() {
         server: paths.root
     });
     browserSync.watch(paths.root + '/**/*.*', browserSync.reload);
+}
+
+function clean() {
+    return del(paths.root)
 }
 
 function templates() {
@@ -75,11 +82,19 @@ function images() {
          .pipe(gulp.dest(paths.images.dest))
 }
 
+function icons() {
+    return gulp.src(paths.icons.src)
+         .pipe(imagemin())
+         .pipe(gulp.dest(paths.icons.dest))
+}
+
 
 exports.templates = templates;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.images = images;
+exports.icons = icons;
+exports.clean = clean;
 
 gulp.task('default', () => 
     gulp.src('img/*')
@@ -89,7 +104,8 @@ gulp.task('default', () =>
 
 gulp.task('default', 
     gulp.series(
-    gulp.parallel(styles, templates, images),
+    clean,
+    gulp.parallel(styles, templates, images, icons),
     gulp.parallel(watch, server)
 ));
 
