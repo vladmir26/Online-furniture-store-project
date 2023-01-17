@@ -38,6 +38,7 @@
     "gulp-sass": "^5.1.0",
     "normalize.css": "^8.0.1",
     "reset-css": "^5.0.1",
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "scss-reset": "^1.2.2"
   }
 }

@@ -1,4 +1,4 @@
-@import '../node_modules/reset-css/reset';
+@import '../node_modules/scss-reset/reset';
 
 
 $font-primary: "Clash Display";
@@ -60,6 +60,10 @@ a:hover {
         display: flex;
         }
 
+        &__hamburger {
+        display: none;
+        }
+
         &__cart-link {
         margin-right: 16px;
         }
@@ -97,6 +101,37 @@ a:hover {
 
 @media  screen and (max-width: 767px) {
         
+.wrapper {
+        
+        &__icons {
+          display: none;
+        }
+
+        &__title-link {
+          order: 1;
+        }
+
+        &__search-hamburger {
+          order: 2;
+        }
+
+        &__search-link {
+          padding-right: 20px;
+        }
+
+        &__hamburger {
+          display: inline;
+        }
+ }
+
+.wrapper::after {
+          display: none;
+}
+
+.menu {
+          display: none;
+}
+
 }
 
 
@@ -129,7 +164,7 @@ a:hover {
           font-family: $font-secondary;
           font-size: 16px;
           width: 170px;
-          height: 56px;
+          min-height: 56px;
           margin-top: 40px;
           margin-bottom: auto;
           padding: 16px 32px;
@@ -228,14 +263,19 @@ a:hover {
           font-size: 18px;
           padding-top: 8px;
         }
-      
+        
+        &__button-link-wrapper {
+           display: flex;
+           text-align: center;
+           justify-content: center;
+           align-items: center;
+        }
+
       
         &__button-link {
           background-color: $background-third;
           color: $background-primary;
           font-family: $font-secondary;
-          width: 170px;
-          height: 56px;
           display: block;
           margin-left: auto;
           margin-right: auto;
@@ -272,8 +312,8 @@ a:hover {
           font-size: 32px; 
         }
 
-        &__image-wide {
-          height: 375px;
+        &__image--wide {
+          min-width: 630px;
         }
 
         &__image {
@@ -293,13 +333,18 @@ a:hover {
           padding-top: 8px;
         }
 
+        &__button-link-wrapper {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+        }
+
         &__button-link {
           background-color: $background-third;
           color: $background-primary;
           font-family: $font-secondary;
-          width: 170px;
-          height: 56px;
-          display: block;
+          display: inline-block;
           margin-left: auto;
           margin-right: auto;
           margin-top: 35px;
@@ -335,14 +380,15 @@ a:hover {
         &__input {
           width: 354px;
           height: 56px;
-          background-color: rgba(255, 255, 255, .2);
-          border: rgba(0, 0, 0, 1.2);
+          background-color: $background-third;
+          border: 2px solid $background-third;
           padding-left: 30px;
           padding-right: 30px;
         }
 
         &__input::placeholder {
           color: $background-primary;
+          opacity: .2;
         }
 
         &__button {
@@ -351,6 +397,7 @@ a:hover {
           background-color: $background-primary;
           color: $color-primary;
           font-family: $font-secondary;
+          border: $background-primary;
         }
 }
 
@@ -417,19 +464,42 @@ a:hover {
           background-color: $background-primary;
           color: $color-primary;
           position: relative;
+          padding-top: 60px;
+          padding-left: 80px;
+          padding-right: 80px;
+          padding-bottom: 50px;
         }
 
-        &__top-wrapper::before {
+        &__top-wrapper::after {
           content: "";
           position: absolute;
           border: 1px solid #4E4D93;
-          top: 125px;
+          bottom: 0;
           left: 30px;
           right: 30px;
         }
 
-        &__top-inner-wrapper {
+        &__top-inner-wrapper--left {
           width: 50%;
+          display: flex;
+        }
+
+        &__top-inner-wrapper--right {
+          width: 50%;
+
+        }
+
+        &__list-wrapper {
+          width: 30%;
+        }
+
+        &__list {
+          padding-top: 10px;
+        }
+
+        &__form {
+          display: flex;
+          padding-top: 15px;
         }
 
         &__buttom-wrapper {
@@ -437,12 +507,21 @@ a:hover {
           justify-content: space-between;
           background-color: $background-primary;
           color: $color-primary;
+          padding-left: 80px;
+          padding-right: 80px;
+          padding-top: 20px;
+          padding-bottom: 20px;
         }
 
+        &__buttom-inner-wrapper {
+          display: flex;
+        }
+        
          
         &__item {
           font-family: $font-secondary;
           font-size: 14px;
+          padding-top: 12px;
 
         }
 
@@ -469,6 +548,7 @@ a:hover {
           height: 56px;
           color: $background-primary;
           font-family: $font-secondary;
+          border: $background-primary;
         }
 
         &__text {
