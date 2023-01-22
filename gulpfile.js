@@ -2,12 +2,14 @@ const gulp = require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
+const webpackStream = require('webpack-stream');
 const gulpWebpack = require('gulp-webpack');
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.config.js');
 const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const del = require('del');
+const csso = require('gulp-csso');
 
 const paths = {
     root: './dist',
@@ -37,6 +39,7 @@ const paths = {
     }
 
 }
+  
 
 function watch() {
     gulp.watch(paths.styles.src, styles);
@@ -66,13 +69,14 @@ function styles() {
     return gulp.src(paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(csso())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styles.dest))
 }
 
 function scripts() {
    return gulp.src(paths.sripts.src)
-     .pipe(gulpWebpack(webpackConfig, webpack))
+     .pipe(webpackStream(webpackConfig, webpack))
      .pipe(gulp.dest(paths.sripts.dest))
 }
 
@@ -96,16 +100,11 @@ exports.images = images;
 exports.icons = icons;
 exports.clean = clean;
 
-gulp.task('default', () => 
-    gulp.src('img/*')
-       .pipe(imagemin())
-       .pipe(gulp.dest('dist/assets'))
-)
 
 gulp.task('default', 
     gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, icons),
+    gulp.parallel(styles, templates, images, icons, scripts),
     gulp.parallel(watch, server)
 ));
 

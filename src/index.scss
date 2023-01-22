@@ -29,6 +29,11 @@ $color-fourth: #800080;
         padding: 60px 80px;
         background-color: $background-third;
         }
+
+        &__white-wrapper--brand {
+        padding: 60px 80px;
+        background-color: $color-primary;
+        }
 }
 
 a {
@@ -194,6 +199,43 @@ a:hover {
 
 }
 
+@media  screen and (max-width: 767px) { 
+
+.container__white-wrapper--brand {
+         padding: 0;    
+}
+
+.brand__left-content {
+          width: 100%;
+}
+
+.brand__bottom-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+}
+
+
+.brand__text {
+          order: 2;
+}
+
+.brand__button-link {
+          order: 3;
+          margin-top: 30px;
+          width: 100%;
+          text-align: center;
+}
+
+
+.brand__image-wrapper {
+          display: none;
+}
+
+}
+
+
 .advantages {
       
         &__list {
@@ -221,6 +263,26 @@ a:hover {
           padding-top: 8px;
         }
 
+
+}
+
+@media  screen and (max-width: 767px) { 
+
+.advantages__heading {
+          text-align: start;
+}
+
+.advantages__list {
+          display: block;
+}
+
+.advantages__item {
+         padding-bottom: 35px;
+}
+
+.advantages__item:last-child {
+         padding-bottom: 0;
+}
 
 }
 
@@ -276,13 +338,22 @@ a:hover {
           background-color: $background-third;
           color: $background-primary;
           font-family: $font-secondary;
-          display: block;
           margin-left: auto;
           margin-right: auto;
           margin-top: 35px;
+          padding: 16px 32px;
         }
 
     
+}
+
+@media  screen and (max-width: 767px) { 
+
+.ceramics__list {
+  flex-wrap: wrap;
+
+}
+
 }
 
 .products {
@@ -294,10 +365,6 @@ a:hover {
 
         &__item {
           padding-left: 20px;
-        }
-
-        &__item--wide {
-          flex-basis: 670px;
         }
 
         &__item:first-child {
@@ -313,7 +380,7 @@ a:hover {
         }
 
         &__image--wide {
-          min-width: 630px;
+          width: 630px;
         }
 
         &__image {
@@ -338,16 +405,17 @@ a:hover {
           text-align: center;
           justify-content: center;
           align-items: center;
+          padding-bottom: 60px;
         }
 
         &__button-link {
           background-color: $background-third;
           color: $background-primary;
           font-family: $font-secondary;
-          display: inline-block;
           margin-left: auto;
           margin-right: auto;
           margin-top: 35px;
+          padding: 16px 32px;
         }
 
 }
@@ -458,10 +526,11 @@ a:hover {
 
 .footer {
 
+        background-color: $background-primary;
+
         &__top-wrapper {
           display: flex;
           justify-content: space-between;
-          background-color: $background-primary;
           color: $color-primary;
           position: relative;
           padding-top: 60px;
@@ -479,12 +548,12 @@ a:hover {
           right: 30px;
         }
 
-        &__top-inner-wrapper--left {
+        &__top-inner-wrapper-left {
           width: 50%;
           display: flex;
         }
 
-        &__top-inner-wrapper--right {
+        &__top-inner-wrapper-right {
           width: 50%;
 
         }
@@ -505,7 +574,6 @@ a:hover {
         &__buttom-wrapper {
           display: flex;
           justify-content: space-between;
-          background-color: $background-primary;
           color: $color-primary;
           padding-left: 80px;
           padding-right: 80px;
@@ -530,9 +598,9 @@ a:hover {
         }
 
         &__input {
-          width: 509px;
-          height: 56px;
-          background: rgba(255, 255, 255, 0.15);
+          color: $color-primary;
+          width: calc(100% - 94px);
+          background-color: rgba(255, 255, 255, 0.15);
           border: rgba(255, 255, 255, 0.15);
           padding-left: 30px;
           padding-right: 30px;
@@ -544,11 +612,16 @@ a:hover {
 
         &__button {
           background-color: $color-primary;
-          width: 118px;
-          height: 56px;
+          padding: 20px;
           color: $background-primary;
           font-family: $font-secondary;
           border: $background-primary;
+        }
+
+        &__button:hover {
+          opacity: 1;
+          background-color: rgba(255, 255, 255, 0.5);;
+          color: $color-primary;
         }
 
         &__text {
@@ -556,7 +629,8 @@ a:hover {
           font-size: 14px;
         }
 
-        &__icons {
-           padding-left: 25px;
+        &__icons-link {
+          margin-left: 25px;
         }
+
 }

@@ -18,27 +18,30 @@
   },
   "homepage": "https://github.com/vladmir26/webpack-project#readme",
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "browser-sync": "^2.27.11",
     "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-next": "^1.0.9",
     "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-watch": "^5.0.1",
     "gulp-webpack": "^1.5.0",
-    "node-normalize-scss": "^8.1.2",
     "sass": "^1.57.1",
+    "save-dev": "^0.0.1-security",
+    "scss-reset": "^1.2.2",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "browser-sync": "^2.27.11",
     "fs.promises": "^0.1.2",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0",
-    "normalize.css": "^8.0.1",
-    "reset-css": "^5.0.1",
-    "save-dev": "^0.0.1-security",
-    "scss-reset": "^1.2.2"
+    "gulp-clean-css": "^4.3.0"
   }
 }
