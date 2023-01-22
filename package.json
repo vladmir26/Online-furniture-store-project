@@ -31,7 +31,6 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-watch": "^5.0.1",
-    "gulp-webpack": "^1.5.0",
     "sass": "^1.57.1",
     "save-dev": "^0.0.1-security",
     "scss-reset": "^1.2.2",
@@ -41,7 +40,6 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "fs.promises": "^0.1.2",
-    "gulp-clean-css": "^4.3.0"
+    "fs.promises": "^0.1.2"
   }
 }

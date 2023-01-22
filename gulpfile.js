@@ -3,7 +3,6 @@ const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const webpackStream = require('webpack-stream');
-const gulpWebpack = require('gulp-webpack');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const browserSync = require('browser-sync').create();
