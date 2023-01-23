@@ -160,7 +160,7 @@ a:hover {
         }
 
         &__heading {
-          font-size: 32px;
+            font-size: 32px;
         }
 
         &__button-link {
@@ -620,7 +620,7 @@ a:hover {
 
         &__button:hover {
           opacity: 1;
-          background-color: rgba(255, 255, 255, 0.5);;
+          background-color: rgba(255, 255, 255, 0.5);
           color: $color-primary;
         }
 

@@ -9,6 +9,18 @@ const browserSync = require('browser-sync').create();
 const imagemin = require('gulp-imagemin');
 const del = require('del');
 const csso = require('gulp-csso');
+const gulpStylelint = require('gulp-stylelint');
+
+gulp.task('lint-css', function lintCssTask() {
+   
+    return gulp
+      .src('src/*.scss')
+      .pipe(gulpStylelint({
+        reporters: [
+          {formatter: 'string', console: true}
+        ]
+      }));
+  });
 
 const paths = {
     root: './dist',
@@ -91,6 +103,17 @@ function icons() {
          .pipe(gulp.dest(paths.icons.dest))
 }
 
+function lintCss () {
+    return gulp.src('./src/*.scss')
+         .pipe(gulpStylelint({
+            reporters: [
+              {  formatter: 'string', 
+                 console: true
+              }
+      ]
+    }));
+}
+
 
 exports.templates = templates;
 exports.styles = styles;
@@ -98,6 +121,7 @@ exports.scripts = scripts;
 exports.images = images;
 exports.icons = icons;
 exports.clean = clean;
+exports.lintCss = lintCss;
 
 
 gulp.task('default', 
