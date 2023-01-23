@@ -127,7 +127,7 @@ exports.lintCss = lintCss;
 gulp.task('default', 
     gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, icons, scripts),
+    gulp.parallel(styles, templates, images, icons, scripts, lintCss),
     gulp.parallel(watch, server)
 ));
 
