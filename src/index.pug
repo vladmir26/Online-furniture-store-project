@@ -146,19 +146,20 @@ html
            button.subscription__button(type="submit") Sign up
       section.brand-about.container 
        .brand-about__wrapper 
+        .container__white-wrapper.container__white-wrapper--brand-about
          .brand-about__left-content
           .brand-about__top-wrapper 
              h2.brand-about__heading From a studio in London to a global brand with over 400 outlets
              p.brand-about__text-primary When we started Avion, the idea was simple. Make high quality furniture affordable and available for the mass market. 
              p.brand-about__text-secondary Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so our Chelsea boutique become the hotbed for the London interior design community.
              a.brand-about__button-link(href="#") Get in touch
-         .brand-about__image-wrapper 
+        .brand-about__image-wrapper 
            img.brand-about__image(src='./images/content-image/image-seventh.png', alt='image-seventh')
       footer.footer
        .container 
         .footer__top-wrapper
          .footer__top-inner-wrapper-left
-           .footer__list-wrapper
+           .footer__list-wrapper.footer__list-wrapper-left
              h2.footer__heading Menu
              ul.footer__list 
               li.footer__item 
@@ -171,7 +172,7 @@ html
                a.footer__link(href="#") Popular this week
               li.footer__item 
                a.footer__link(href="#") All products
-           .footer__list-wrapper
+           .footer__list-wrapper.footer__list-wrapper-right
               h2.footer__heading Categories
               ul.footer__list 
                li.footer__item 
@@ -186,7 +187,7 @@ html
                 a.footer__link(href="#") Chairs
                li.footer__item 
                 a.footer__link(href="#") Crockery
-           .footer__list-wrapper
+           .footer__list-wrapper.footer__list-wrapper-bottom
              h2.footer__heading Our company
              ul.footer__list 
               li.footer__item 
@@ -207,7 +208,7 @@ html
         .footer__buttom-wrapper
          .footer__buttom-inner-wrapper
           p.footer__text Copyright 2022 Avion LTD
-         .footer__buttom-inner-wrapper
+         .footer__buttom-inner-wrapper.footer__buttom-inner-wrapper--right
           a.footer__icons-link(href="#", title="linkedin")
             svg.footer__icons(width='24' height='24' viewbox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg')
              rect(width='24' height='24' fill='white' style='mix-blend-mode:multiply')

@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const fs = require('fs.promises');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 
 const config = {
@@ -14,7 +15,8 @@ const config = {
   plugins: [
       new UglifyJSPlugin({
         sourceMap: true
-      })
+      }),
+      new ESLintPlugin()
     ],
     module: {
       rules: [
