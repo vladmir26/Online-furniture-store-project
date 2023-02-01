@@ -455,7 +455,7 @@ a:hover {
   }
 
   &__text {
-    width: 470px;
+    max-width: 470px;
     padding-top: 16px;
     margin-right: auto;
     margin-left: auto;
@@ -492,9 +492,21 @@ a:hover {
 }
 
 @media screen and (max-width: 767px) {
+  .container {
+    &__white-wrapper--color {
+      padding: 0;
+    }
+  }
+
   .subscription {
-    &__inner-wrapper {
-      width: 100%;
+    &__input {
+      max-width: 224px;
+      max-height: 56px;
+    }
+
+    &__button {
+      max-width: 118px;
+      max-height: 56px;
     }
   }
 }
