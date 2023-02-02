@@ -289,14 +289,14 @@ a:hover {
 }
 
 .ceramics {
-  &__list {
-    display: flex;
-    margin-top: 35px;
+  &__container-grid {
+    display: grid;
+    grid-template-rows: 1280px 1280px 1280px;
+    grid-template-columns: 625px 625px 625px 625px;
   }
 
-  &__item {
-    width: 25%;
-    padding-left: 20px;
+  &__list {
+    grid-column: 1/4;
   }
 
   &__item:first-child {
@@ -329,9 +329,6 @@ a:hover {
   }
 
   &__button-link-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
   }
 
