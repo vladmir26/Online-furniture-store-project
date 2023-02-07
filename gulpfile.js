@@ -11,17 +11,6 @@ const del = require('del');
 const csso = require('gulp-csso');
 const gulpStylelint = require('gulp-stylelint');
 
-gulp.task('lint-css', function lintCssTask() {
-   
-    return gulp
-      .src('src/*.scss')
-      .pipe(gulpStylelint({
-        reporters: [
-          {formatter: 'string', console: true}
-        ]
-      }));
-  });
-
 const paths = {
     root: './dist',
     templates: {
@@ -124,10 +113,14 @@ exports.clean = clean;
 exports.lintCss = lintCss;
 
 
-gulp.task('default', 
+gulp.task('build', 
     gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, icons, scripts, lintCss),
+    gulp.parallel(styles, templates, images, icons, scripts, lintCss)
+));
+
+gulp.task('start',
+    gulp.series(
     gulp.parallel(watch, server)
 ));
 
