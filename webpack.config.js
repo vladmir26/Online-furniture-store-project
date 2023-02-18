@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const fs = require('fs.promises');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 
@@ -13,9 +13,6 @@ const config = {
     filename: "[name].js"
   },
   plugins: [
-      new UglifyJSPlugin({
-        sourceMap: true
-      }),
       new ESLintPlugin()
     ],
     module: {
@@ -35,5 +32,12 @@ const config = {
   };
 
 
+  
+  module.exports = {
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+    },
+  };
   module.exports = config;
    

@@ -4,10 +4,7 @@
 		"stylelint-config-recess-order"
 	],
 
-	"customSyntax": "postcss-scss",
+	"customSyntax": "postcss-scss"
      
-	"rules": {
-		"import-notation": null
-	}
 }
  

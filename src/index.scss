@@ -35,8 +35,8 @@ body {
     background-color: $color-primary;
   }
 
-  &__white-wraper--brand-about {
-    display: none;
+  &__white-wrapper--brand-about {
+    width: 50%;
   }
 }
 
@@ -115,6 +115,10 @@ a:hover {
   }
 }
 
+.close {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   .wrapper {
     padding: 20px;
@@ -146,6 +150,28 @@ a:hover {
 
   .menu {
     display: none;
+
+    &__item {
+      padding: 0;
+    }
+  }
+
+  .close {
+    display: none;
+  }
+
+  .close-active {
+    display: flex;
+    justify-content: end;
+    margin-right: 20px;
+  }
+
+  .menu-active {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: 0;
+    margin-right: 20px;
   }
 }
 
@@ -186,12 +212,12 @@ a:hover {
     font-size: 16px;
     color: $color-primary;
     background-color: $background-secondary;
-    opacity: 0.2;
+    opacity: 1;
   }
 
   &__button-link:hover {
     color: $color-primary;
-    opacity: 1;
+    opacity: 0.2;
   }
 
   &__text {
@@ -368,6 +394,14 @@ a:hover {
       height: 201px;
       object-fit: cover;
     }
+
+    &__button-link-wrapper {
+      display: block;
+    }
+
+    &__button-link {
+      display: block;
+    }
   }
 }
 
@@ -437,12 +471,26 @@ a:hover {
 @media screen and (max-width: 767px) {
   .products {
     &__list {
+      display: flex;
       width: 100%;
       overflow-x: scroll;
     }
 
+    &__item {
+      flex-shrink: 0;
+      width: 200px;
+    }
+
     &__image {
       height: 251px;
+    }
+
+    &__button-link-wrapper {
+      display: block;
+    }
+
+    &__button-link {
+      display: block;
     }
   }
 }
@@ -522,7 +570,7 @@ a:hover {
   }
 
   &__left-content {
-    width: 50%;
+    height: 100%;
   }
 
   &__heading {
@@ -548,7 +596,6 @@ a:hover {
     align-items: flex-start;
     justify-content: flex-start;
     height: 100%;
-    padding: 75px;
   }
 
   &__button-link {
@@ -570,6 +617,12 @@ a:hover {
 }
 
 @media screen and (max-width: 767px) {
+  .container {
+    &__white-wrapper--brand-about {
+      width: 100%;
+    }
+  }
+
   .brand-about {
     &__wrapper {
       display: block;
@@ -691,6 +744,10 @@ a:hover {
 
   &__icons-link {
     margin-left: 25px;
+  }
+
+  &__icons-path:hover {
+    fill: rgba(255 255 255 / 15%);
   }
 }
 
