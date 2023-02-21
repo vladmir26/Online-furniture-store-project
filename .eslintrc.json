@@ -1,12 +1,21 @@
 {
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "parser": "@babel/eslint-parser",
-        "requireConfigFile": false,
-        "extends": ["airbnb"]
+        "requireConfigFile": false
     },
 
-    "env": {
-        "es6": true
+    "extends": ["airbnb-base"],
+    "globals": {
+        "document": "writable"
+    },
+    "rules": {
+
+    "linebreak-style": "off",
+    "quotes": "off",
+    "no-use-before-define": "off",
+    "prefer-template": "off",
+    "import/order": "off",
+    "import/extensions": "off"
     }
   }

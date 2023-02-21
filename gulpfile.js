@@ -12,97 +12,92 @@ const csso = require('gulp-csso');
 const gulpStylelint = require('gulp-stylelint');
 
 const paths = {
-    root: './dist',
-    templates: {
-        pages: './src/*.pug',
-        src: './src/*.pug',
-        dest: './dist/',
-    },
-    styles: {
-        main: './src/*.scss',
-        src: './src/*.scss',
-        dest: './dist/'
-    },
-    sripts: {
-        src: './srs/*js',
-        dest: './dist/'
-    },
+  root: './dist',
+  templates: {
+    pages: './src/*.pug',
+    src: './src/*.pug',
+    dest: './dist/',
+  },
+  styles: {
+    main: './src/*.scss',
+    src: './src/*.scss',
+    dest: './dist/',
+  },
+  sripts: {
+    src: './srs/*js',
+    dest: './dist/',
+  },
+  images: {
+    src: './src/img/content-image/*',
+    dest: './dist/images/content-image',
+  },
+  icons: {
+    src: './src/img/icons/*',
+    dest: './dist/images/icons',
+  },
 
-    images: {
-        src: './src/img/content-image/*',
-        dest: './dist/images/content-image',
-    },
-
-    icons: {
-        src: './src/img/icons/*', 
-        dest: './dist/images/icons',
-    }
-
-}
-  
+};
 
 function watch() {
-    gulp.watch(paths.styles.src, styles);
-    gulp.watch(paths.templates.src, templates)
+  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.templates.src, templates);
 }
 
 function server() {
-    browserSync.init({
-        server: paths.root
-    });
-    browserSync.watch(paths.root + '/**/*.*', browserSync.reload);
+  browserSync.init({
+    server: paths.root,
+  });
+  browserSync.watch(paths.root + '/**/*.*', browserSync.reload);
 }
 
 function clean() {
-    return del(paths.root)
+  return del(paths.root);
 }
 
 function templates() {
-    return gulp.src(paths.templates.pages)
-       .pipe(pug({ pretty: true }))
-       .pipe(gulp.dest(paths.root))
+  return gulp.src(paths.templates.pages)
+    .pipe(pug({ pretty: true }))
+    .pipe(gulp.dest(paths.root));
 }
 
-
-
 function styles() {
-    return gulp.src(paths.styles.src)
+  return gulp.src(paths.styles.src)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(csso())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(gulp.dest(paths.styles.dest));
 }
 
 function scripts() {
-   return gulp.src(paths.sripts.src)
-     .pipe(webpackStream(webpackConfig, webpack))
-     .pipe(gulp.dest(paths.sripts.dest))
+  return gulp.src(paths.sripts.src)
+    .pipe(webpackStream(webpackConfig, webpack))
+    .pipe(gulp.dest(paths.sripts.dest));
 }
 
 function images() {
-    return gulp.src(paths.images.src)
-         .pipe(imagemin())
-         .pipe(gulp.dest(paths.images.dest))
+  return gulp.src(paths.images.src)
+    .pipe(imagemin())
+    .pipe(gulp.dest(paths.images.dest));
 }
 
 function icons() {
-    return gulp.src(paths.icons.src)
-         .pipe(imagemin())
-         .pipe(gulp.dest(paths.icons.dest))
+  return gulp.src(paths.icons.src)
+    .pipe(imagemin())
+    .pipe(gulp.dest(paths.icons.dest));
 }
 
-function lintCss () {
-    return gulp.src('./src/*.scss')
-         .pipe(gulpStylelint({
-            reporters: [
-              {  formatter: 'string', 
-                 console: true
-              }
-      ]
+function lintCss() {
+  return gulp.src('./src/*.scss')
+    .pipe(gulpStylelint({
+      reporters: [
+        {
+          formatter: 'string',
+          console: true,
+        },
+      ],
     }));
 }
-
 
 exports.templates = templates;
 exports.styles = styles;
@@ -112,15 +107,17 @@ exports.icons = icons;
 exports.clean = clean;
 exports.lintCss = lintCss;
 
-
-gulp.task('build', 
-    gulp.series(
+gulp.task(
+  'build',
+  gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, icons, scripts, lintCss)
-));
+    gulp.parallel(styles, templates, images, icons, scripts, lintCss),
+  ),
+);
 
-gulp.task('start',
-    gulp.series(
-    gulp.parallel(watch, server)
-));
-
+gulp.task(
+  'start',
+  gulp.series(
+    gulp.parallel(watch, server),
+  ),
+);
