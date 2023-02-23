@@ -1,0 +1,84 @@
+@import "variables.scss";
+
+.ceramics {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    margin-top: 35px;
+  }
+
+  &__item {
+    padding-left: 20px;
+  }
+
+  &__item:first-child {
+    padding-left: 0;
+  }
+
+  &__link {
+    color: $background-primary;
+  }
+
+  &__heading {
+    font-size: 32px;
+  }
+
+  &__image {
+    width: 305px;
+    height: 375px;
+    object-fit: cover;
+  }
+
+  &__title {
+    padding-top: 24px;
+    font-size: 20px;
+  }
+
+  &__text {
+    padding-top: 8px;
+    font-family: $font-secondary;
+    font-size: 18px;
+  }
+
+  &__button-link-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__button-link {
+    padding: 16px 32px;
+    margin-top: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: $font-secondary;
+    color: $background-primary;
+    background-color: $background-third;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ceramics {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__item:nth-child(3) {
+      padding-left: 0;
+    }
+
+    &__image {
+      height: 201px;
+      object-fit: cover;
+    }
+
+    &__button-link-wrapper {
+      display: block;
+    }
+
+    &__button-link {
+      display: block;
+    }
+  }
+}

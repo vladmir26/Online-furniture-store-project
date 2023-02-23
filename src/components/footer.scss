@@ -1,0 +1,158 @@
+@import "variables.scss";
+
+.footer {
+  background-color: $background-primary;
+
+  &__top-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 80px 50px;
+    color: $color-primary;
+  }
+
+  &__top-wrapper::after {
+    position: absolute;
+    right: 30px;
+    bottom: 0;
+    left: 30px;
+    content: "";
+    border: 1px solid #4e4d93;
+  }
+
+  &__top-inner-wrapper-left {
+    display: flex;
+    width: 50%;
+  }
+
+  &__top-inner-wrapper-right {
+    width: 50%;
+  }
+
+  &__list-wrapper {
+    width: 30%;
+  }
+
+  &__list {
+    padding-top: 10px;
+  }
+
+  &__form {
+    display: flex;
+    padding-top: 15px;
+  }
+
+  &__buttom-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 80px;
+    color: $color-primary;
+  }
+
+  &__buttom-inner-wrapper {
+    display: flex;
+  }
+
+  &__item {
+    padding-top: 12px;
+    font-family: $font-secondary;
+    font-size: 14px;
+  }
+
+  &__link {
+    color: $color-primary;
+  }
+
+  &__input {
+    width: calc(100% - 94px);
+    padding-right: 30px;
+    padding-left: 30px;
+    color: $color-primary;
+    background-color: rgba(255 255 255 / 15%);
+    border: rgba(255 255 255 / 15%);
+  }
+
+  &__input::placeholder {
+    color: $color-primary;
+  }
+
+  &__button {
+    padding: 20px;
+    font-family: $font-secondary;
+    color: $background-primary;
+    background-color: $color-primary;
+    border: $background-primary;
+  }
+
+  &__button:hover {
+    color: $color-primary;
+    background-color: rgba(255 255 255 / 50%);
+    opacity: 1;
+  }
+
+  &__text {
+    font-family: $font-secondary;
+    font-size: 14px;
+  }
+
+  &__icons-link {
+    margin-left: 25px;
+  }
+
+  &__icons-path:hover {
+    fill: rgba(255 255 255 / 15%);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  footer {
+    &__top-wrapper {
+      display: block;
+      padding: 40px 25px 15px;
+    }
+
+    &__top-wrapper::after {
+      right: 25px;
+      left: 25px;
+    }
+
+    &__top-inner-wrapper-left {
+      flex-wrap: wrap;
+      width: 100%;
+      padding-bottom: 40px;
+    }
+
+    &__top-inner-wrapper-right {
+      width: 100%;
+    }
+
+    &__list-wrapper {
+      width: 50%;
+    }
+
+    &__list-wrapper-left {
+      order: 2;
+    }
+
+    &__list-wrapper-right {
+      order: 1;
+    }
+
+    &__list-wrapper-bottom {
+      order: 3;
+      padding-top: 40px;
+    }
+
+    &__input {
+      padding-left: 20px;
+    }
+
+    &__buttom-wrapper {
+      padding: 20px 70px;
+    }
+
+    &__buttom-inner-wrapper--right {
+      display: none;
+    }
+  }
+}

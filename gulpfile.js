@@ -18,10 +18,18 @@ const paths = {
     src: './src/*.pug',
     dest: './dist/',
   },
+  modules: {
+    src: './src/modules/*.pug',
+    dest: './dist/modules/',
+  },
   styles: {
     main: './src/*.scss',
     src: './src/*.scss',
     dest: './dist/',
+  },
+  components: {
+    src: './src/components/*.scss',
+    dest: './dist/components/',
   },
   sripts: {
     src: './srs/*js',
@@ -41,6 +49,8 @@ const paths = {
 function watch() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.templates.src, templates);
+  gulp.watch(paths.modules.src, modules);
+  gulp.watch(paths.components.src, components);
 }
 
 function server() {
@@ -57,6 +67,18 @@ function clean() {
 function templates() {
   return gulp.src(paths.templates.pages)
     .pipe(pug({ pretty: true }))
+    .pipe(gulp.dest(paths.root));
+}
+
+function modules() {
+  return gulp.src(paths.modules.src)
+    .pipe(pug({ pretty: true }))
+    .pipe(gulp.dest(paths.root));
+}
+
+function components() {
+  return gulp.src(paths.components.src)
+    .pipe(sass({ pretty: true}))
     .pipe(gulp.dest(paths.root));
 }
 
@@ -100,7 +122,9 @@ function lintCss() {
 }
 
 exports.templates = templates;
+exports.modules = modules;
 exports.styles = styles;
+exports.components = components;
 exports.scripts = scripts;
 exports.images = images;
 exports.icons = icons;
@@ -111,7 +135,7 @@ gulp.task(
   'build',
   gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, icons, scripts, lintCss),
+    gulp.parallel(styles, templates, modules, components, images, icons, scripts, lintCss),
   ),
 );
 

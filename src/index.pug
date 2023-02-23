@@ -4,6 +4,7 @@ doctype html
 html 
   head 
     meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title Webpack
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(href='https://fonts.cdnfonts.com/css/clash-display', rel="stylesheet")
@@ -11,5 +12,13 @@ html
     link(rel='stylesheet', href='index.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
   body 
-    include modules/header.pug 
+    include modules/header.pug
+    main 
+      include modules/brand.pug 
+      include modules/advantages.pug 
+      include modules/ceramics.pug
+      include modules/products.pug
+      include modules/subscription.pug 
+      include modules/brand-about.pug 
+    include modules/footer.pug
   script(src='./index.js')

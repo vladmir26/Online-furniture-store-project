@@ -1,0 +1,48 @@
+@import "variables.scss";
+
+.advantages {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+
+  &__item {
+    width: 270px;
+  }
+
+  &__heading {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__title {
+    padding-top: 16px;
+    font-size: 20px;
+  }
+
+  &__text {
+    padding-top: 8px;
+    font-family: $font-secondary;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .advantages {
+    &__heading {
+      text-align: start;
+    }
+
+    &__list {
+      display: block;
+    }
+
+    &__item {
+      padding-bottom: 35px;
+    }
+
+    &__item:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

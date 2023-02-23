@@ -1,0 +1,51 @@
+@import "variables.scss";
+
+body {
+  font-family: $font-primary;
+  color: $background-primary;
+}
+
+.container {
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+
+  &__white-wrapper {
+    padding: 60px 80px;
+    background-color: $color-primary;
+  }
+
+  &__white-wrapper--color {
+    padding: 60px 80px;
+    background-color: $background-third;
+  }
+
+  &__white-wrapper--brand {
+    padding: 60px 80px;
+    background-color: $color-primary;
+  }
+
+  &__white-wrapper--brand-about {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    &__white-wrapper {
+      padding: 45px 25px;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: $color-fourth;
+}
+
+.link-icons {
+  color: $background-primary;
+}

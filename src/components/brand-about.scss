@@ -1,0 +1,85 @@
+@import "variables.scss";
+
+.brand-about {
+  &__wrapper {
+    display: flex;
+    min-height: 603px;
+  }
+
+  &__left-content {
+    height: 100%;
+  }
+
+  &__heading {
+    font-size: 24px;
+  }
+
+  &__text-primary {
+    padding-top: 25px;
+    font-family: $font-secondary;
+    color: #505977;
+  }
+
+  &__text-secondary {
+    padding-top: 25px;
+    margin-bottom: 50px;
+    font-family: $font-secondary;
+    color: #505977;
+  }
+
+  &__top-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+  &__button-link {
+    height: 56px;
+    padding: 16px 32px;
+    margin-top: auto;
+    color: $background-primary;
+    background-color: $background-third;
+  }
+
+  &__image-wrapper {
+    width: 50%;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    &__white-wrapper--brand-about {
+      width: 100%;
+    }
+  }
+
+  .brand-about {
+    &__wrapper {
+      display: block;
+    }
+
+    &__left-content {
+      width: 100%;
+    }
+
+    &__top-wrapper {
+      padding: 0;
+    }
+
+    &__button-link {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__image-wrapper {
+      width: 100%;
+    }
+  }
+}
