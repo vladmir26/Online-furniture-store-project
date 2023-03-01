@@ -39,6 +39,7 @@
 
   &__form {
     display: flex;
+    flex-wrap: wrap;
     padding-top: 15px;
   }
 
@@ -99,9 +100,15 @@
     margin-left: 25px;
   }
 
-  &__icons-path:hover {
+  &__icons-link:hover .footer__icons-path {
     fill: rgba(255 255 255 / 15%);
   }
+}
+
+.window {
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 767px) {

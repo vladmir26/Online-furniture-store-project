@@ -4,18 +4,11 @@
         "ecmaVersion": "latest",
         "requireConfigFile": false
     },
-
     "extends": ["airbnb-base"],
-    "globals": {
-        "document": "writable"
+    "env": {
+        "browser": true
     },
     "rules": {
-
-    "linebreak-style": "off",
-    "quotes": "off",
-    "no-use-before-define": "off",
-    "prefer-template": "off",
-    "import/order": "off",
-    "import/extensions": "off"
+        "no-param-reassign": "off"
     }
 }

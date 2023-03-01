@@ -1,13 +1,13 @@
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
-const config = {
+module.exports = {
   mode: 'development',
   entry: {
-    index: "./src/index.js",
+    index: './src/index.js',
   },
   output: {
-    filename: "[name].js",
+    filename: '[name].js',
   },
   plugins: [
     new ESLintPlugin(),
@@ -26,12 +26,8 @@ const config = {
       },
     ],
   },
-};
-
-module.exports = {
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin()],
   },
 };
-module.exports = config;
