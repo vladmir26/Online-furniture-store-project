@@ -5,6 +5,10 @@ body {
   color: $background-primary;
 }
 
+.js-disable-scroll {
+  overflow: hidden;
+}
+
 .container {
   max-width: 1440px;
   margin-right: auto;

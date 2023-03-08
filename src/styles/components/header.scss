@@ -67,23 +67,6 @@
   display: none;
 }
 
-.wrapper__form--active {
-  display: flex;
-  width: 300px;
-}
-
-.wrapper__search-link--active {
-  display: none;
-}
-
-.close-form--active {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  margin-top: 0;
-  margin-right: 20px;
-}
-
 @media screen and (max-width: 767px) {
   .wrapper {
     padding: 20px;
@@ -113,11 +96,6 @@
       display: none;
     }
 
-    &__form--active {
-      display: flex;
-      width: 300px;
-    }
-
     &__hamburger-link--active {
       display: none;
     }
@@ -131,6 +109,50 @@
     display: none;
   }
 
+  .js-header--show-search {
+    .wrapper__search {
+      display: none;
+    }
+
+    .js-close-form {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      width: 16px;
+      height: 16px;
+      color: #000;
+    }
+
+    .js-form {
+      position: absolute;
+      top: 80px;
+      left: 25px;
+      display: flex;
+      height: 30px;
+    }
+
+    .js-input {
+      width: calc(100% - 94px);
+      padding-right: 10px;
+      padding-left: 10px;
+      color: $color-primary;
+      background-color: rgba(255 255 255 / 15%);
+      border: rgba(255 255 255 / 15%);
+    }
+
+    .js-input::placeholder {
+      color: $color-primary;
+    }
+
+    .js-button {
+      padding: 5px;
+      font-family: $font-secondary;
+      color: $background-primary;
+      background-color: $color-primary;
+      border: $background-primary;
+    }
+  }
+
   .menu {
     display: none;
 
@@ -139,35 +161,30 @@
     }
   }
 
-  .close-menu {
-    display: none;
-  }
+  .js-header--show-menu {
+    .wrapper__hamburger {
+      display: none;
+    }
 
-  .close-menu--active {
-    display: flex;
-    justify-content: end;
-    order: 1;
-    width: 36px;
-    height: 33px;
-  }
+    .js-close-menu {
+      display: flex;
+      justify-content: end;
+      order: 1;
+      width: 16px;
+      height: 16px;
+      color: #000;
+    }
 
-  .menu-active {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    margin-top: 0;
-    margin-right: 20px;
-  }
-
-  .close-form {
-    display: none;
-  }
-
-  .close-form--active {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    margin-top: 0;
-    margin-right: 20px;
+    .js-menu {
+      position: absolute;
+      top: 69px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      margin-top: 0;
+      background-color: #fff;
+      border-top: 1px solid;
+    }
   }
 }
