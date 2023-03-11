@@ -9,7 +9,14 @@ const imagemin = require('gulp-imagemin');
 const del = require('del');
 const csso = require('gulp-csso');
 const gulpStylelint = require('gulp-stylelint');
+const pugLinter = require('gulp-pug-linter');
 const webpackConfig = require('./webpack.config');
+
+gulp.task('lint:template', () => (
+  gulp
+    .src('./**/*.pug')
+    .pipe(pugLinter({ reporter: 'default' }))
+));
 
 const paths = {
   root: './dist',

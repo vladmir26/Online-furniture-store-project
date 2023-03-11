@@ -9,11 +9,15 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(href='https://fonts.cdnfonts.com/css/clash-display', rel="stylesheet")
     link(href='https://fonts.cdnfonts.com/css/satoshi', rel="stylesheet")
-    link(rel='stylesheet', href='index.css')
+    block styles
+      link(rel='stylesheet', href='index.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
   body
-   include modules/header.pug
-   main
+    include modules/header.pug
+    main
       block content
-   include modules/footer.pug
+      block content-catalog banner
+      block content-catalog filters
+      block content-catalog products-catalog
+    include modules/footer.pug
   script(src='index.js')
