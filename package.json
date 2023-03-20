@@ -41,6 +41,8 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-stylelint": "^13.0.0",
     "gulp-watch": "^5.0.1",
+    "pug-lint": "^2.6.0",
+    "pug-lint-config-clock": "^2.0.0",
     "sass": "^1.57.1",
     "save-dev": "^0.0.1-security",
     "scss-reset": "^1.2.2",

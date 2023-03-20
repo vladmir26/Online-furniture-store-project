@@ -1,0 +1,33 @@
+@import "variables.scss";
+
+.filters {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    padding-bottom: 20px;
+  }
+
+  &__list {
+    padding-bottom: 50px;
+  }
+
+  &__label {
+    font-family: $font-secondary;
+  }
+}
+
+.visially-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
+  border: 0;
+}

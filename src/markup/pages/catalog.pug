@@ -1,14 +1,8 @@
-extends ../layout.pug 
+extends ../layout.pug
 
-block styles 
-  link(rel='stylesheet', href='catalog.css')
-
-block content-catalog banner
+block content 
   include ../modules/banner.pug
-block content-catalog products-catalog
-  include ../modules/products-catalog-filters.pug
 
-
-
-
-
+  .page-catalog
+    include ../modules/filters.pug
+    include ../modules/products-catalog.pug

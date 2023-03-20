@@ -1,0 +1,19 @@
+@import "variables.scss";
+
+.banner {
+  padding-top: 20px;
+
+  &__splash {
+    display: flex;
+    height: 209px;
+    background-image: url('../../images/content-image/image-eight.png');
+  }
+
+  &__heading {
+    align-self: flex-end;
+    padding-bottom: 36px;
+    padding-left: 80px;
+    font-size: 36px;
+    color: $color-primary;
+  }
+}

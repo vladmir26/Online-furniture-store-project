@@ -1,17 +1,6 @@
 @import "variables.scss";
 
-.wrapper-top {
-  display: flex;
-}
-
-.filters {
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.products-catalog-filters {
+.products-catalog {
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +44,7 @@
     padding: 16px 32px;
     margin-top: 35px;
     margin-right: auto;
+    margin-bottom: 40px;
     margin-left: auto;
     font-family: $font-secondary;
     color: $background-primary;
