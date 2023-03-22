@@ -11,10 +11,16 @@
   }
 
   &__list {
+    width: 114px;
     padding-bottom: 48px;
   }
 
+  &__list:last-child {
+    width: 156px;
+  }
+
   &__label {
+    padding-left: 12px;
     font-family: $font-secondary;
   }
 }
