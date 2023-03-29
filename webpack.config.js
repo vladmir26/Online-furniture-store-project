@@ -1,5 +1,6 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader');
 
 module.exports = {
   mode: 'development',
@@ -11,6 +12,7 @@ module.exports = {
   },
   plugins: [
     new ESLintPlugin(),
+    new VueLoaderPlugin(),
   ],
   module: {
     rules: [
@@ -24,6 +26,11 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+
     ],
   },
   optimization: {
