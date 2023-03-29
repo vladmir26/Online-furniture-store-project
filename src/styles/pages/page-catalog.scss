@@ -2,7 +2,14 @@
   display: flex;
 
   .filters {
+    flex-basis: 150px;
     margin-top: 48px;
     margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-catalog {
+    display: block;
   }
 }

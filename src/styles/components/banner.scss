@@ -1,12 +1,12 @@
 @import "variables.scss";
 
 .banner {
-  padding-top: 20px;
+  margin-top: 20px;
+  background-image: url('../../images/content-image/image-eight.png');
 
   &__splash {
     display: flex;
     height: 209px;
-    background-image: url('../../images/content-image/image-eight.png');
   }
 
   &__heading {
@@ -15,5 +15,21 @@
     padding-left: 80px;
     font-size: 36px;
     color: $color-primary;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .banner {
+    margin-top: 0;
+    background-repeat: round;
+
+    &__splash {
+      justify-content: center;
+    }
+
+    &__heading {
+      padding-top: 64px;
+      padding-bottom: 32px;
+    }
   }
 }

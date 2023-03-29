@@ -8,6 +8,7 @@
     "env": {
         "browser": true
     },
+    "ignorePatterns": ["vue.js"],
     "rules": {
         "no-param-reassign": "off"
     }

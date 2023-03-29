@@ -1,6 +1,8 @@
 @import "variables.scss";
 
 .products-catalog {
+  max-width: 980px;
+
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -49,5 +51,24 @@
     font-family: $font-secondary;
     color: $background-primary;
     background-color: $background-third;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .products-catalog {
+    &__image {
+      height: 201px;
+      object-fit: cover;
+    }
+
+    &__button-link-wrapper {
+      display: block;
+    }
+
+    &__button-link {
+      display: block;
+      margin-right: 24px;
+      margin-left: 24px;
+    }
   }
 }
