@@ -57,9 +57,11 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "css-loader": "^6.7.3",
     "fs.promises": "^0.1.2",
     "postcss": "^8.4.21",
     "postcss-scss": "^4.0.6",
-    "vue": "^3.2.36"
+    "vue": "^3.2.36",
+    "vue-style-loader": "^4.1.3"
   }
 }

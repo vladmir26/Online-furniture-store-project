@@ -1,6 +1,6 @@
 import './js-modules/header';
 import './js-modules/subsription';
-import Vue from 'vue';
-import Counter from './app.vue';
+import { createApp } from 'vue';
+import Message from './App.vue';
 
-Vue.createApp(Counter).mount('#counter');
+createApp(Message).mount('#message');
