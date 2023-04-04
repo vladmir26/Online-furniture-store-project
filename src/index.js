@@ -1,6 +1,6 @@
 import './js-modules/header';
 import './js-modules/subsription';
 import { createApp } from 'vue';
-import Message from './App.vue';
+import message from './js-modules/Catalog.vue';
 
-createApp(Message).mount('#message');
+createApp(message).mount('.products-catalog');
