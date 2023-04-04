@@ -1,7 +1,7 @@
 <template>
-<div class="products-catalog">
-    <h1>{{ message }}</h1>
-</div>
+    <div id='catalog'>
+        <p>{{ message }}</p>
+    </div>
 </template>
 
 <script>

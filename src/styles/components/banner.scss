@@ -3,6 +3,7 @@
 .banner {
   margin-top: 20px;
   background-image: url('../../images/content-image/image-eight.png');
+  background-size: cover;
 
   &__splash {
     display: flex;
@@ -21,7 +22,6 @@
 @media screen and (max-width: 767px) {
   .banner {
     margin-top: 0;
-    background-repeat: round;
 
     &__splash {
       justify-content: center;

@@ -57,7 +57,8 @@
 @media screen and (max-width: 767px) {
   .products-catalog {
     &__image {
-      height: 201px;
+      width: 201px;
+      height: 250px;
       object-fit: cover;
     }
 
