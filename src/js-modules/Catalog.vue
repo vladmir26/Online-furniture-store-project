@@ -1,15 +1,30 @@
 <template>
-    <div id='catalog'>
-        <p>{{ message }}</p>
-    </div>
+    
 </template>
 
 <script>
+import { onMounted } from 'vue';
+
 export default {
     data() {
         return {
-           message: "Привет VUE!"
-        }
+          products: []
+          
+        },
+        onMounted(() => {
+            
+         let response  = fetch('https://dummyjson.com/products')
+          .then(res => res.text())
+
+          for (let key in response) {
+            console.log(response[key])
+
+
+
+          }
+
+        
+        })
     }
 }
 </script>
