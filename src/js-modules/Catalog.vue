@@ -2,7 +2,7 @@
     <aside class="filters" id="catalog">
     <div class="filters__wrapper">
         <h2 class="visially-hidden">Filters</h2>
-        <div class="filters__button-wrapper"><button class="filters__button-first">Filters</button><button class="filters__button-second">Sorting</button></div>
+        <div class="filters__button-wrapper"><button class="filters__button-first">Filters</button><button @click="buttonClick" class="filters__button-second">Sorting</button></div>
         <h3 class="filters__title">Categories</h3>
         <ul class="filters__list">
             <li v-for="item in categories" class="filters__item">
@@ -48,6 +48,7 @@ export default {
            categories: [],
            brands: [],
            productsSmartphones: [],
+           sorting: ['Popular', 'Cheapest first', 'Expensive first']
 
         }
         },
@@ -85,5 +86,73 @@ export default {
                 })
               .catch(console.log)
         },
+        methods: {
+            buttonClick(event) {
+                let el = event.target;
+                let psevsdoEl = window.getComputedStyle(el, ':after');
+                psevsdoEl.display = 'none';
+
+                el.innerHTML += `<ul class='js-string-list'><li>${this.sorting[0]}</li><li>${this.sorting[1]}</li><li>${this.sorting[2]}</li></ul>`
+
+            }
+        }
         }
 </script>
+
+<style lang="scss">
+
+@import "../styles/components/variables.scss";
+
+
+.filters {
+    &__button-wrapper {
+        display: block;
+    }
+
+    &__button-first {
+        display: none;
+    }
+
+    &__button-second {
+        position: relative;
+        width: 120px;
+        height: 40px;
+        font-family: $font-secondary;
+        color: $background-primary;
+        background-color: $background-third;
+    }
+}
+
+.filters__button-second::after {
+    position: absolute;
+    top: 12;
+    width: 0;
+    height: 0;
+    margin-top: 5px;
+    margin-left: 12px;
+    content: '';
+    border-color: #000 transparent transparent transparent;
+    border-style: solid;
+    border-width: 8px 8px 0 8px;
+  }
+  .filters__button-second--triangle::after {
+    position: absolute;
+    top: 12;
+    width: 0;
+    height: 0;
+    content: '';
+    margin-top: 5px;
+    margin-left: 12px;
+    border-style: solid;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent #000000 transparent transparent;
+  }
+  .js-string-list {
+    position: absolute;
+    width: 120px;
+    margin-bottom: 35px;
+    margin-left: 95px;
+    background-color: $background-third;
+    text-align: start;
+  }
+</style>

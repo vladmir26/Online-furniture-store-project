@@ -60,8 +60,10 @@
   "dependencies": {
     "css-loader": "^6.7.3",
     "fs.promises": "^0.1.2",
+    "npm": "^9.6.4",
     "postcss": "^8.4.21",
     "postcss-scss": "^4.0.6",
+    "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
     "vue": "^3.2.36",
     "vue-style-loader": "^4.1.3"
