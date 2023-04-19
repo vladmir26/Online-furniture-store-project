@@ -87,16 +87,15 @@ export default {
               .catch(console.log)
         },
         methods: {
-            buttonClick(event) {
-                let el = event.target;
-                let psevsdoEl = window.getComputedStyle(el, ':after');
-                psevsdoEl.display = 'none';
-
-                el.innerHTML += `<ul class='js-string-list'><li>${this.sorting[0]}</li><li>${this.sorting[1]}</li><li>${this.sorting[2]}</li></ul>`
-
-            }
+          buttonClick(event) {
+            event.target.innerHTML += `<ul class='js-string-list'><li>${this.sorting[0]}</li><li>${this.sorting[1]}</li><li>${this.sorting[2]}</li></ul>`;
+            
+            if(event.target.classList.contains('filters__button-second::after')) {
+             event.target.classList.remove('filters__button-second::after');
         }
-        }
+    }
+}
+}
 </script>
 
 <style lang="scss">
@@ -131,18 +130,16 @@ export default {
     margin-top: 5px;
     margin-left: 12px;
     content: '';
-    border-color: #000 transparent transparent transparent;
     border-style: solid;
     border-width: 8px 8px 0 8px;
+    border-color: #000000 transparent transparent transparent;
   }
-  .filters__button-second--triangle::after {
+  .filters__button-second-triangle::after {
     position: absolute;
     top: 12;
     width: 0;
     height: 0;
     content: '';
-    margin-top: 5px;
-    margin-left: 12px;
     border-style: solid;
     border-width: 8px 16px 8px 0;
     border-color: transparent #000000 transparent transparent;
