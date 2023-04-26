@@ -1,25 +1,32 @@
 <template>
     <aside class="filters" id="catalog">
     <div class="filters__wrapper">
-        <h2 class="visially-hidden">Filters</h2>
-        <div class="filters__button-wrapper"><button class="filters__button-first">Filters</button><button @click="buttonClick" class="filters__button-second">Sorting</button></div>
+       <h2 class="visially-hidden">Filters</h2>
+       <div class="filters__button-wrapper"><button class="filters__button-first">Filters</button>
+       <select name="sorting" v-model="sorting">
+           <option value="popular">Popular</option>
+           <option value="cheap">Cheapest first</option>
+           <option value="expensive">Expensive first</option>
+        </select>
+        </div>
         <h3 class="filters__title">Categories</h3>
         <ul class="filters__list">
             <li v-for="item in categories" class="filters__item">
-               <input class="filters__checkbox" :id="item" type="checkbox" name="categories" :value="item">
+               <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="categories" :value="item">
                <label  class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
             </li> 
         </ul>
         <h3 class="filters__title">Price</h3>
         <ul class="filters__list">
-            <li class="filters__item"><input class="filters__checkbox" id="checkbox-price-one" type="checkbox" name="price" value="price-one" /><label class="filters__label" for="checkbox-price-one">0 - 100</label></li>
-            <li class="filters__item"><input class="filters__checkbox" id="checkbox-price-two" type="checkbox" name="price" value="price-two" /><label class="filters__label" for="checkbox-price-two">101 - 250</label></li>
-            <li class="filters__item"><input class="filters__checkbox" id="checkbox-price-third" type="checkbox" name="price" value="price-third" /><label class="filters__label" for="checkbox-price-third">250 +</label></li>
+            <li class="filters__item" v-for="item in prises">
+              <input class="filters__checkbox" :id="item" type="checkbox" name="price" :value="item" />
+              <label class="filters__label" :for="item"></label>
+            </li>
         </ul>
         <h3 class="filters__title">Brands</h3>
         <ul class="filters__list">
             <li class="filters__item" v-for="item in brands">
-               <input class="filters__checkbox" :id="item" type="checkbox" name="categories" :value="item">
+               <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="categories" :value="item">
                <label class="filters__label" :for="item">{{ item }}</label>
             </li> 
         </ul>
@@ -28,7 +35,7 @@
     <section class="products-catalog">
     <h2 class="visially-hidden">Products catalog</h2>
     <ul class="products-catalog__list">
-        <li v-for="item in products" class="products-catalog__item"> <a class="products-catalog__link" href="#">
+        <li v-for="item in productsSorted" class="products-catalog__item"> <a class="products-catalog__link" href="#">
                 <img class="products-catalog__image" :src="item.images[0]" alt="image-first" />
                 <h3 class="products-catalog__title">{{ item.title }}</h3>
                 <p class="products-catalog__text">£{{ item.price }}</p>
@@ -47,10 +54,30 @@ export default {
            products: [],
            categories: [],
            brands: [],
-           productsSmartphones: [],
-           sorting: ['Popular', 'Cheapest first', 'Expensive first']
+           prises: [],
+           filters: [],
+           priceFilters: [],
+           sorting: 'popular'
 
         }
+        },
+        computed: {
+          productsfiltered() {
+            if (!this.filters.length) {
+              return this.products;
+            } else {
+              return this.products.filter(item => this.filters.includes(item.brand) || this.filters.includes(item.category))
+            }
+          },
+          productsSorted() {
+            if (this.sorting === 'popular') {
+              return this.productsfiltered;
+            } else if (this.sorting === 'cheap') {
+              return this.productsfiltered.sort((a, b) => a.price - b.price);
+            } else if (this.sorting === 'expensive') {
+              return this.productsfiltered.sort((a, b) => b.price - a.price);
+            }
+          }
         },
         created() {
             fetch('https://dummyjson.com/products')
@@ -66,36 +93,31 @@ export default {
                     if(!this.brands.includes(product.brand)) {
                         this.brands.push(product.brand);
                     }
-                })
-                    console.log(this.products);
-                    console.log(this.categories);
-                    //console.log(this.brands);
 
-                    this.products.filter(item =>  {
-                      if (item.category === 'smartphones') {
-                      this.productsSmartphones.push(item)
-                   }
-                }
-                );
-
-                console.log(this.productsSmartphones);
-
-
-                     
-
+                    if(!this.prises.includes(product.price)) {
+                        this.prises.push(product.price);
+                    }
+                })      
+                console.log(this.prises);
                 })
               .catch(console.log)
         },
-        methods: {
-          buttonClick(event) {
-            event.target.innerHTML += `<ul class='js-string-list'><li>${this.sorting[0]}</li><li>${this.sorting[1]}</li><li>${this.sorting[2]}</li></ul>`;
-            
-            if(event.target.classList.contains('filters__button-second::after')) {
-             event.target.classList.remove('filters__button-second::after');
-        }
+        methods: { 
+
+    filterItems(event) {
+       if(event.target.checked) {
+          this.filters.push(event.target.value)
+      } else {
+          this.filters = this.filters.filter(item => item !== event.target.value);  
+      }
+    },
+
+    filterPrice(event) {
+
     }
 }
 }
+
 </script>
 
 <style lang="scss">
@@ -139,9 +161,11 @@ export default {
     top: 12;
     width: 0;
     height: 0;
+    margin-top: 5px;
+    margin-left: 12px;
     content: '';
     border-style: solid;
-    border-width: 8px 16px 8px 0;
+    border-width: 8px 8px 8px 0;
     border-color: transparent #000000 transparent transparent;
   }
   .js-string-list {

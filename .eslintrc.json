@@ -1,5 +1,5 @@
 {
-    "parser": "@babel/eslint-parser",
+    "parser":  "@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "requireConfigFile": false
@@ -12,3 +12,5 @@
         "no-param-reassign": "off"
     }
 }
+
+
