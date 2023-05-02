@@ -147,7 +147,7 @@ export default {
                 this.filters.push(event.target.value)
               }
             } else {
-              this.filters = this.filters.filter(item => item !== event.target.value || Object.is(item, Object) && item.id !== +event.target.value);  
+              this.filters = this.filters.filter(item => typeof item === 'string' && item!== event.target.value || typeof item === 'object' && item.id !== +event.target.value);  
             }
           },
           },
