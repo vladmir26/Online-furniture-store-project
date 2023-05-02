@@ -18,9 +18,9 @@
         </ul>
         <h3 class="filters__title">Price</h3>
         <ul class="filters__list">
-            <li class="filters__item" v-for="item in prises">
-              <input class="filters__checkbox" :id="item" type="checkbox" name="price" :value="item" />
-              <label class="filters__label" :for="item"></label>
+            <li class="filters__item" v-for="item in priceRange">
+              <input class="filters__checkbox" :id="item.id" type="checkbox" @change="filterItems" name="price" :value="item.id" />
+              <label class="filters__label" :for="item.id">{{ item.name }}</label>
             </li>
         </ul>
         <h3 class="filters__title">Brands</h3>
@@ -54,19 +54,57 @@ export default {
            products: [],
            categories: [],
            brands: [],
-           prises: [],
+           maxPrice: 0,
+           priсes: [],
            filters: [],
+           selectedPriceCategory: [],
            priceFilters: [],
            sorting: 'popular'
 
         }
         },
         computed: {
+          oneThirdPrice() {
+            return Math.ceil(this.maxPrice / 3);
+          },
+          priceRange() {
+            return [
+              { id: 1,
+                name: `0 - ${this.oneThirdPrice}`,
+                minValue: 0,
+                maxValue: this.oneThirdPrice
+              },
+              { id: 2,
+                name: `${this.oneThirdPrice + 1} - ${this.oneThirdPrice * 2}`,
+                minValue: this.oneThirdPrice + 1,
+                maxValue: this.oneThirdPrice * 2
+              },
+              { id: 3,
+                name: `${this.oneThirdPrice * 2 + 1} - ${this.maxPrice}`,
+                minValue: this.oneThirdPrice * 2 + 1,
+                maxValue: this.maxPrice
+              }
+            ]
+          },
           productsfiltered() {
             if (!this.filters.length) {
               return this.products;
             } else {
-              return this.products.filter(item => this.filters.includes(item.brand) || this.filters.includes(item.category))
+                const resArr = [];
+                this.products.forEach(item => {
+                  this.filters.forEach((filter) => {
+                    if (typeof filter === 'string') {
+                      if (filter === item.brand || filter === item.category) {
+                        resArr.push(item);
+                      }
+                    } else { 
+                      if (item.price >= filter.minValue && item.price <= filter.maxValue) {
+                        resArr.push(item);
+                      }
+                    }
+                  })
+                })
+                return resArr;
             }
           },
           productsSorted() {
@@ -94,29 +132,28 @@ export default {
                         this.brands.push(product.brand);
                     }
 
-                    if(!this.prises.includes(product.price)) {
-                        this.prises.push(product.price);
-                    }
-                })      
-                console.log(this.prises);
-                })
+                    this.maxPrice = product.price > this.maxPrice ? product.price : this.maxPrice;
+                });  
+              })
               .catch(console.log)
         },
         methods: { 
 
-    filterItems(event) {
-       if(event.target.checked) {
-          this.filters.push(event.target.value)
-      } else {
-          this.filters = this.filters.filter(item => item !== event.target.value);  
-      }
-    },
+          filterItems(event) {
+            if(event.target.checked) {
+              if (event.target.name === 'price') {
+                 this.filters.push(this.priceRange.find((price) => price.id === +event.target.value))
+              } else {
+                this.filters.push(event.target.value)
+              }
+            } else {
+              this.filters = this.filters.filter(item => item !== event.target.value || Object.is(item, Object) && item.id !== +event.target.value);  
+            }
+          },
+          },
 
-    filterPrice(event) {
+}
 
-    }
-}
-}
 
 </script>
 
@@ -177,3 +214,5 @@ export default {
     text-align: start;
   }
 </style>
+
+

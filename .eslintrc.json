@@ -4,7 +4,13 @@
         "ecmaVersion": "latest",
         "requireConfigFile": false
     },
-    "extends": ["airbnb-base"],
+    "plugins": [
+        "vue"
+    ],
+    "extends": [
+        "airbnb-base",
+        "plugin:vue/vue3-recommended"
+    ],
     "env": {
         "browser": true
     },
