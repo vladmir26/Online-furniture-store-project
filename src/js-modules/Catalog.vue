@@ -26,7 +26,7 @@
         <h3 class="filters__title">Brands</h3>
         <ul class="filters__list">
             <li class="filters__item" v-for="item in brands">
-               <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="categories" :value="item">
+               <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="brands" :value="item">
                <label class="filters__label" :for="item">{{ item }}</label>
             </li> 
         </ul>
@@ -42,7 +42,7 @@
             </a>
         </li>
     </ul>
-    <div class="products-catalog__button-link-wrapper"><a class="products-catalog__button-link" href="#">Load more</a></div>
+    <div class="products-catalog__button-link-wrapper"><a class="products-catalog__button-link" @click="loadingProducts" href="#">Load more</a></div>
 </section>
 </template>
 
@@ -91,7 +91,7 @@ export default {
               return this.products;
             } else {
                 const resArr = [];
-                this.products.forEach(item => {
+                this.products.forEach((item) => {
                   this.filters.forEach((filter) => {
                     if (typeof filter === 'string') {
                       if (filter === item.brand || filter === item.category) {
@@ -108,12 +108,13 @@ export default {
             }
           },
           productsSorted() {
+            const sorted = [...this.productsfiltered];
             if (this.sorting === 'popular') {
               return this.productsfiltered;
             } else if (this.sorting === 'cheap') {
-              return this.productsfiltered.sort((a, b) => a.price - b.price);
+              return sorted.sort((a, b) => a.price - b.price);
             } else if (this.sorting === 'expensive') {
-              return this.productsfiltered.sort((a, b) => b.price - a.price);
+              return sorted.sort((a, b) => b.price - a.price);
             }
           }
         },
@@ -147,12 +148,25 @@ export default {
                 this.filters.push(event.target.value)
               }
             } else {
-              this.filters = this.filters.filter(item => typeof item === 'string' && item!== event.target.value || typeof item === 'object' && item.id !== +event.target.value);  
+              this.filters = this.filters.filter(item => typeof item === 'string' && item !== event.target.value || typeof item === 'object' && item.id !== +event.target.value);  
             }
           },
-          },
+          loadingProducts() {
+              fetch('https://dummyjson.com/products?limit=30&skip=30')
+                .then((res) => res.json())
+                .then(res => {
+                  console.log(res);
+                  console.log(res.products)
+                  this.products.push(res.products);
+                })
+                .catch(console.log)
 
-}
+
+            }
+          },
+      }
+
+
 
 
 </script>
