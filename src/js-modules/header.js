@@ -1,26 +1,9 @@
-const header = document.getElementById('header');
-const hamburgerLink = document.querySelector('.js-hamburger-link');
-const searchLink = document.querySelector('.js-search-link');
-
-hamburgerLink.addEventListener('click', (event) => {
+$('.js-hamburger-link').click((event) => {
   event.preventDefault();
+  $('#header').toggleClass('js-header--show-menu').removeClass('js-header--show-search');
+})
 
-  if (header.classList.contains('js-header--show-menu')) {
-    header.classList.remove('js-header--show-menu');
-  } else {
-    header.classList.add('js-header--show-menu');
-  }
-  header.classList.remove('js-header--show-search');
-});
-
-searchLink.addEventListener('click', (event) => {
+$('.js-search-link').click((event) => {
   event.preventDefault();
-
-  if (header.classList.contains('js-header--show-search')) {
-    header.classList.remove('js-header--show-search');
-  } else {
-    header.classList.add('js-header--show-search');
-  }
-
-  header.classList.remove('js-header--show-menu');
-});
+  $('#header').toggleClass('js-header--show-search').removeClass('js-header--show-menu')
+})
