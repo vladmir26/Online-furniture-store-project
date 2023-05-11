@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
   },
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].js',
   },
@@ -44,8 +45,16 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
 
     ],
+},
+resolve: {
+  extensions: ['.tsx', '.ts', '.js'],
 },
   optimization: {
     minimize: true,

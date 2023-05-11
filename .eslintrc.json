@@ -14,7 +14,7 @@
     "env": {
         "browser": true
     },
-    "ignorePatterns": ["header.js"],
+    "ignorePatterns": ["header.js", "test.ts"],
     "rules": {
         "no-param-reassign": "off"
     }

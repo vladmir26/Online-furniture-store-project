@@ -29,7 +29,7 @@ const paths = {
     dest: './dist/',
   },
   scripts: {
-    src: ['./src/**/*.js', './src/**/*.vue'],
+    src: ['./src/**/*.js', './src/**/*.vue', './src/**/*.ts'],
     dest: './dist/',
   },
   images: {
