@@ -24,7 +24,7 @@
             </li>
         </ul>
         <h3 class="filters__title">Brands</h3>
-        <ul class="filters__list">
+        <ul class="filters__list--scroll">
             <li class="filters__item" v-for="item in brands">
                <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="brands" :value="item">
                <label class="filters__label" :for="item">{{ item }}</label>
@@ -42,7 +42,7 @@
             </a>
         </li>
     </ul>
-    <div class="products-catalog__button-link-wrapper"><a class="products-catalog__button-link" @click="loadingProducts" href="#">Load more</a></div>
+    <div class="products-catalog__button-link-wrapper"><a class="products-catalog__button-link"  @click.prevent="loadingProducts" href="#">Load more</a></div>
 </section>
 </template>
 
@@ -51,6 +51,8 @@
 export default {
     data() {
         return {
+           limit: 30,
+           counter: 1,
            products: [],
            categories: [],
            brands: [],
@@ -59,7 +61,7 @@ export default {
            filters: [],
            selectedPriceCategory: [],
            priceFilters: [],
-           sorting: 'popular'
+           sorting: 'popular',
 
         }
         },
@@ -94,11 +96,11 @@ export default {
                 this.products.forEach((item) => {
                   this.filters.forEach((filter) => {
                     if (typeof filter === 'string') {
-                      if (filter === item.brand || filter === item.category) {
+                      if ((filter === item.brand || filter === item.category) && !resArr.includes(item)) {
                         resArr.push(item);
                       }
                     } else { 
-                      if (item.price >= filter.minValue && item.price <= filter.maxValue) {
+                      if ((item.price >= filter.minValue && item.price <= filter.maxValue) && !resArr.includes(item)) {
                         resArr.push(item);
                       }
                     }
@@ -123,8 +125,13 @@ export default {
               .then((res) => res.json())
               .then(res => {
                 this.products = res.products;
-
-                this.products.forEach((product) => {
+                this.createFilters();
+              })
+              .catch(console.log)
+        },
+        methods: { 
+          createFilters() {
+            this.products.forEach((product) => {
                     if(!this.categories.includes(product.category)) {
                         this.categories.push(product.category);
                     }
@@ -135,11 +142,7 @@ export default {
 
                     this.maxPrice = product.price > this.maxPrice ? product.price : this.maxPrice;
                 });  
-              })
-              .catch(console.log)
-        },
-        methods: { 
-
+          },
           filterItems(event) {
             if(event.target.checked) {
               if (event.target.name === 'price') {
@@ -151,19 +154,23 @@ export default {
               this.filters = this.filters.filter(item => typeof item === 'string' && item !== event.target.value || typeof item === 'object' && item.id !== +event.target.value);  
             }
           },
-          loadingProducts() {
-              fetch('https://dummyjson.com/products?limit=30&skip=30')
+          loadingProducts(event) {
+              fetch(`https://dummyjson.com/products?limit=${this.limit}&skip=${this.counter*this.limit}`)
                 .then((res) => res.json())
                 .then(res => {
-                  console.log(res);
-                  console.log(res.products)
-                  this.products.push(res.products);
+                  console.log(res)
+                  this.counter +=1;
+                  this.products = this.products.concat(res.products);
+                  this.createFilters();
+                  if (res.limit === 0) {
+                    event.target.classList.add("js-hidden");
+                }
+                  
                 })
                 .catch(console.log)
 
-
-            }
           },
+        },
       }
 
 
@@ -177,6 +184,11 @@ export default {
 
 
 .filters {
+   &__list--scroll {
+     width: 270px;
+     max-height: 250px;
+     overflow-y: scroll;
+   }
     &__button-wrapper {
         display: block;
     }
@@ -227,6 +239,11 @@ export default {
     background-color: $background-third;
     text-align: start;
   }
+  .js-hidden {
+    display: none;
+  }
+  
+
 </style>
 
 
