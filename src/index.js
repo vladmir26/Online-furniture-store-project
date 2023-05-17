@@ -2,6 +2,6 @@ import './js-modules/header';
 import './js-modules/subsription';
 import './js-modules/test.ts';
 import { createApp } from 'vue';
-import message from './js-modules/Catalog.vue';
+import message from './js-modules/Catalog-products.vue';
 
 createApp(message).mount('#catalog');

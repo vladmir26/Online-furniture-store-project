@@ -13,14 +13,16 @@ module.exports = {
     filename: '[name].js',
   },
   plugins: [
-    new ESLintPlugin(),
+    new ESLintPlugin({
+      extensions: ['js', 'vue'],
+    }),
     new VueLoaderPlugin(),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery'",
-      "window.$": "jquery"
-})],
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery',
+    })],
   module: {
     rules: [
       {
@@ -52,10 +54,10 @@ module.exports = {
       },
 
     ],
-},
-resolve: {
-  extensions: ['.tsx', '.ts', '.js'],
-},
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin()],
