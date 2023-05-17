@@ -1,9 +1,32 @@
 <template>
     <aside class="filters" id="catalog">
     <div class="filters__wrapper">
+    <div class="filters__accordion-wrapper">
+    <button @click="FiltersAccordion" class="accordion">Categories</button>
+      <ul class="panel">
+            <li v-for="item in categories" class="filters__item">
+               <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="categories" :value="item">
+               <label  class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
+            </li> 
+        </ul>
+    <button @click="FiltersAccordion" class="accordion">Price</button>
+      <ul class="panel">
+            <li class="filters__item" v-for="item in priceRange">
+              <input class="filters__checkbox" :id="item.id" type="checkbox" @change="filterItems" name="price" :value="item.id" />
+              <label class="filters__label" :for="item.id">{{ item.name }}</label>
+            </li>
+        </ul>
+    <button @click="FiltersAccordion" class="accordion">Brands</button>
+      <ul class="panel--scroll">
+        <li class="filters__item" v-for="item in brands">
+            <input class="filters__checkbox" :id="item" type="checkbox" @change="filterItems" name="brands" :value="item">
+            <label class="filters__label" :for="item">{{ item }}</label>
+          </li> 
+      </ul>
+    </div>
        <h2 class="visially-hidden">Filters</h2>
        <div class="filters__button-wrapper"><button class="filters__button-first">Filters</button>
-       <select name="sorting" v-model="sorting">
+       <select class="filters__sorting" name="sorting" v-model="sorting">
            <option value="popular">Popular</option>
            <option value="cheap">Cheapest first</option>
            <option value="expensive">Expensive first</option>
@@ -130,6 +153,20 @@ export default {
               .catch(console.log)
         },
         methods: { 
+          FiltersAccordionFor () {
+            for (i = 0; i < acc.length; i++) {
+              acc[i].FiltersAccordion()
+            }
+
+          },
+          FiltersAccordion(event) {
+            event.target.classList.toggle("active");
+            if (event.target.nextElementSibling.style.display === 'block') {
+              event.target.nextElementSibling.style.display = 'none' 
+            }  else {
+               event.target.nextElementSibling.style.display = "block";
+            }
+          }, 
           createFilters() {
             this.products.forEach((product) => {
                     if(!this.categories.includes(product.category)) {
@@ -163,7 +200,7 @@ export default {
                   this.products = this.products.concat(res.products);
                   this.createFilters();
                   if (res.limit === 0) {
-                    event.target.classList.add("js-hidden");
+                    event.target.classList.add('js-hidden');
                 }
                   
                 })
@@ -184,27 +221,36 @@ export default {
 
 
 .filters {
-   &__list--scroll {
+  &__sorting {
+    margin-bottom: 20px;
+  }
+
+  &__accordion-wrapper {
+    display: none;
+  }
+
+  &__list--scroll {
      width: 270px;
      max-height: 250px;
      overflow-y: scroll;
-   }
-    &__button-wrapper {
-        display: block;
-    }
+  }
+    
+  &__button-wrapper {
+      display: block;
+  }
 
-    &__button-first {
-        display: none;
-    }
+  &__button-first {
+    display: none;
+  }
 
-    &__button-second {
-        position: relative;
-        width: 120px;
-        height: 40px;
-        font-family: $font-secondary;
-        color: $background-primary;
-        background-color: $background-third;
-    }
+  &__button-second {
+      position: relative;
+      width: 120px;
+      height: 40px;
+      font-family: $font-secondary;
+      color: $background-primary;
+      background-color: $background-third;
+  }
 }
 
 .filters__button-second::after {
@@ -242,6 +288,52 @@ export default {
   .js-hidden {
     display: none;
   }
+
+  @media screen and (max-width: 767px) {
+    .filters {
+      &__accordion-wrapper {
+        display: block;
+        margin-right: 50px;
+      }
+      &__sorting {
+        display: block;
+        margin-top: 20px;
+      }
+      &__list--scroll {
+        display: none;
+      }
+    }
+
+    .accordion {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+   .panel {
+      padding: 0 18px;
+      background-color: white;
+      display: none;
+      overflow: hidden;
+  }
+  .panel--scroll {
+      padding: 0 18px;
+      background-color: white;
+      display: none;
+      overflow: hidden;
+      width: 300px;
+      max-height: 250px;
+      overflow-y: scroll;
+  }
+}
   
 
 </style>
