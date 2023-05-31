@@ -1,29 +1,6 @@
 <template>
   <aside id="catalog" class="filters">
     <div class="filters__wrapper">
-      <div class="filters__accordion-wrapper">
-        <button class="accordion" @click="FiltersAccordion">Categories</button>
-        <ul class="panel">
-          <li v-for="item in categories" class="filters__item">
-            <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
-            <label class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
-          </li>
-        </ul>
-        <button class="accordion" @click="FiltersAccordion">Price</button>
-        <ul class="panel">
-          <li v-for="item in priceRange" class="filters__item">
-            <input :id="item.id" class="filters__checkbox" type="checkbox" name="price" :value="item.id" @change="filterItems">
-            <label class="filters__label" :for="item.id">{{ item.name }}</label>
-          </li>
-        </ul>
-        <button class="accordion" @click="FiltersAccordion">Brands</button>
-        <ul class="panel--scroll">
-          <li v-for="item in brands" class="filters__item">
-            <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
-            <label class="filters__label" :for="item">{{ item }}</label>
-          </li>
-        </ul>
-      </div>
       <h2 class="visially-hidden">Filters</h2>
       <div class="filters__button-wrapper">
         <button class="filters__button-first">Filters</button>
@@ -33,27 +10,29 @@
           <option value="expensive">Expensive first</option>
         </select>
       </div>
-      <h3 class="filters__title">Categories</h3>
-      <ul class="filters__list">
-        <li v-for="item in categories" class="filters__item">
-          <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
-          <label class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
-        </li>
-      </ul>
-      <h3 class="filters__title">Price</h3>
-      <ul class="filters__list">
-        <li v-for="item in priceRange" class="filters__item">
-          <input :id="item.id" class="filters__checkbox" type="checkbox" name="price" :value="item.id" @change="filterItems">
-          <label class="filters__label" :for="item.id">{{ item.name }}</label>
-        </li>
-      </ul>
-      <h3 class="filters__title">Brands</h3>
-      <ul class="filters__list--scroll">
-        <li v-for="item in brands" class="filters__item">
-          <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
-          <label class="filters__label" :for="item">{{ item }}</label>
-        </li>
-      </ul>
+      <div class="filters__accordion-wrapper" @resize="appearanceAcordion">
+        <h3 class="filters__title">Categories</h3>
+        <ul class="filters__list">
+          <li v-for="item in categories" class="filters__item">
+            <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
+            <label class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
+          </li>
+        </ul>
+        <h3 class="filters__title">Price</h3>
+        <ul class="filters__list">
+          <li v-for="item in priceRange" class="filters__item">
+            <input :id="item.id" class="filters__checkbox" type="checkbox" name="price" :value="item.id" @change="filterItems">
+            <label class="filters__label" :for="item.id">{{ item.name }}</label>
+          </li>
+        </ul>
+        <h3 class="filters__title">Brands</h3>
+        <ul class="filters__list--scroll">
+          <li v-for="item in brands" class="filters__item">
+            <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
+            <label class="filters__label" :for="item">{{ item }}</label>
+          </li>
+        </ul>
+      </div>
     </div>
   </aside>
   <section class="products-catalog">
@@ -154,19 +133,37 @@ export default {
       .catch(console.log);
   },
   methods: {
-    FiltersAccordionFor() {
-      let i;
-      let acc;
-      for (i = 0; i < acc.length; i++) {
-        acc[i].FiltersAccordion();
-      }
-    },
     FiltersAccordion(event) {
       event.target.classList.toggle('active');
-      if (event.target.nextElementSibling.style.display === 'block') {
+      if (event.target.nextElementSibling.style.display === 'block' && document.event.target.clientWidth < 767) {
         event.target.nextElementSibling.style.display = 'none';
       } else {
         event.target.nextElementSibling.style.display = 'block';
+      }
+    },
+    appearanceAcordion(event) {
+      if (window.screen.width < 767) {
+        event.target.innerHTML += `<button class="accordion" @click="FiltersAccordion">Categories</button>
+        <ul class="panel">
+          <li v-for="item in categories" class="filters__item">
+            <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
+            <label class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
+          </li>
+        </ul>
+        <button class="accordion" @click="FiltersAccordion">Price</button>
+        <ul class="panel">
+          <li v-for="item in priceRange" class="filters__item">
+            <input :id="item.id" class="filters__checkbox" type="checkbox" name="price" :value="item.id" @change="filterItems">
+            <label class="filters__label" :for="item.id">{{ item.name }}</label>
+          </li>
+        </ul>
+        <button class="accordion" @click="FiltersAccordion">Brands</button>
+        <ul class="panel--scroll">
+          <li v-for="item in brands" class="filters__item">
+            <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
+            <label class="filters__label" :for="item">{{ item }}</label>
+          </li>
+        </ul>}`;
       }
     },
     createFilters() {
@@ -216,9 +213,6 @@ export default {
 .filters {
   &__sorting {
     margin-bottom: 20px;
-  }
-  &__accordion-wrapper {
-    display: none;
   }
   &__list--scroll {
      width: 270px;
