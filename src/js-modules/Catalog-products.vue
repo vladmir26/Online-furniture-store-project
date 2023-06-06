@@ -1,52 +1,142 @@
 <template>
-  <aside id="catalog" class="filters">
+  <aside
+    id="catalog"
+    class="filters"
+  >
     <div class="filters__wrapper">
-      <h2 class="visially-hidden">Filters</h2>
+      <h2 class="visially-hidden">
+        Filters
+      </h2>
       <div class="filters__button-wrapper">
-        <button class="filters__button-first">Filters</button>
-        <select v-model="sorting" class="filters__sorting" name="sorting">
-          <option value="popular">Popular</option>
-          <option value="cheap">Cheapest first</option>
-          <option value="expensive">Expensive first</option>
+        <button class="filters__button-first">
+          Filters
+        </button>
+        <select
+          v-model="sorting"
+          class="filters__button-second"
+          name="sorting"
+        >
+          <option value="popular">
+            Popular
+          </option>
+          <option value="cheap">
+            Cheapest first
+          </option>
+          <option value="expensive">
+            Expensive first
+          </option>
         </select>
       </div>
-      <div class="filters__accordion-wrapper" @resize="appearanceAcordion">
-        <h3 class="filters__title">Categories</h3>
+      <div
+        class="filters__accordion-wrapper"
+        @resize="appearanceAcordion"
+      >
+        <h3 class="filters__title">
+          Categories
+        </h3>
         <ul class="filters__list">
-          <li v-for="item in categories" class="filters__item">
-            <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
-            <label class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
+          <li
+            v-for="item in categories"
+            :key="item"
+            class="filters__item"
+          >
+            <input
+              :id="item"
+              class="filters__checkbox"
+              type="checkbox"
+              name="categories"
+              :value="item"
+              @change="filterItems"
+            >
+            <label
+              class="filters__label"
+              :for="item"
+            >{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
           </li>
         </ul>
-        <h3 class="filters__title">Price</h3>
+        <h3 class="filters__title">
+          Price
+        </h3>
         <ul class="filters__list">
-          <li v-for="item in priceRange" class="filters__item">
-            <input :id="item.id" class="filters__checkbox" type="checkbox" name="price" :value="item.id" @change="filterItems">
-            <label class="filters__label" :for="item.id">{{ item.name }}</label>
+          <li
+            v-for="item in priceRange"
+            :key="item"
+            class="filters__item"
+          >
+            <input
+              :id="item.id"
+              class="filters__checkbox"
+              type="checkbox"
+              name="price"
+              :value="item.id"
+              @change="filterItems"
+            >
+            <label
+              class="filters__label"
+              :for="item.id"
+            >{{ item.name }}</label>
           </li>
         </ul>
-        <h3 class="filters__title">Brands</h3>
+        <h3 class="filters__title">
+          Brands
+        </h3>
         <ul class="filters__list--scroll">
-          <li v-for="item in brands" class="filters__item">
-            <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
-            <label class="filters__label" :for="item">{{ item }}</label>
+          <li
+            v-for="item in brands"
+            :key="item"
+            class="filters__item"
+          >
+            <input
+              :id="item"
+              class="filters__checkbox"
+              type="checkbox"
+              name="brands"
+              :value="item"
+              @change="filterItems"
+            >
+            <label
+              class="filters__label"
+              :for="item"
+            >{{ item }}</label>
           </li>
         </ul>
       </div>
     </div>
   </aside>
   <section class="products-catalog">
-    <h2 class="visially-hidden">Products catalog</h2>
+    <h2 class="visially-hidden">
+      Products catalog
+    </h2>
     <ul class="products-catalog__list">
-      <li v-for="item in productsSorted" class="products-catalog__item">
-        <a class="products-catalog__link" href="#">
-          <img class="products-catalog__image" :src="item.images[0]" alt="image-first">
+      <li
+        v-for="item in productsSorted"
+        :key="item"
+        class="products-catalog__item"
+      >
+        <a
+          class="products-catalog__link"
+          href="#"
+        >
+          <img
+            class="products-catalog__image"
+            :src="item.images[0]"
+            alt="image-first"
+          >
           <h3 class="products-catalog__title">{{ item.title }}</h3>
           <p class="products-catalog__text">£{{ item.price }}</p>
         </a>
       </li>
     </ul>
-    <div class="products-catalog__button-link-wrapper"><a class="products-catalog__button-link" href="#" @click.prevent="loadingProducts">Load more</a></div>
+    <div
+      v-show="!isLoadMoreHidden"
+      class="products-catalog__button-link-wrapper"
+    >
+      <a
+        class="products-catalog__button-link"
+        href="#"
+        @click.prevent="loadingProducts"
+      >Load more</a>
+    </div>
   </section>
 </template>
 <script>
@@ -64,6 +154,7 @@ export default {
       selectedPriceCategory: [],
       priceFilters: [],
       sorting: 'popular',
+      isLoadMoreHidden: false,
     };
   },
   computed: {
@@ -103,7 +194,8 @@ export default {
                 resArr.push(item);
               }
             } else {
-              if ((item.price >= filter.minValue && item.price <= filter.maxValue) && !resArr.includes(item)) {
+              if ((item.price >= filter.minValue && item.price <= filter.maxValue)
+              && !resArr.includes(item)) {
                 resArr.push(item);
               }
             }
@@ -133,7 +225,7 @@ export default {
       .catch(console.log);
   },
   methods: {
-    FiltersAccordion(event) {
+    filtersAccordion(event) {
       event.target.classList.toggle('active');
       if (event.target.nextElementSibling.style.display === 'block' && document.event.target.clientWidth < 767) {
         event.target.nextElementSibling.style.display = 'none';
@@ -143,7 +235,7 @@ export default {
     },
     appearanceAcordion(event) {
       if (window.screen.width < 767) {
-        event.target.innerHTML += `<button class="accordion" @click="FiltersAccordion">Categories</button>
+        event.target.innerHTML = `<button class="accordion" @click="FiltersAccordion">Categories</button>
         <ul class="panel">
           <li v-for="item in categories" class="filters__item">
             <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
@@ -163,7 +255,7 @@ export default {
             <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
             <label class="filters__label" :for="item">{{ item }}</label>
           </li>
-        </ul>}`;
+        </ul>`;
       }
     },
     createFilters() {
@@ -188,16 +280,15 @@ export default {
         this.filters = this.filters.filter((item) => (typeof item === 'string' && item !== event.target.value) || (typeof item === 'object' && item.id !== +event.target.value));
       }
     },
-    loadingProducts(event) {
+    loadingProducts() {
       fetch(`https://dummyjson.com/products?limit=${this.limit}&skip=${this.counter * this.limit}`)
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           this.counter += 1;
           this.products = this.products.concat(res.products);
           this.createFilters();
-          if (res.limit === 0) {
-            event.target.classList.add('js-hidden');
+          if (res.limit < this.limit) {
+            this.isLoadMoreHidden = true;
           }
         })
         .catch(console.log);
@@ -214,25 +305,43 @@ export default {
   &__sorting {
     margin-bottom: 20px;
   }
+
   &__list--scroll {
      width: 270px;
      max-height: 250px;
      overflow-y: scroll;
   }
+
   &__button-wrapper {
       display: block;
   }
+
   &__button-first {
     display: none;
   }
+
   &__button-second {
       position: relative;
       width: 120px;
       height: 40px;
+      margin-bottom: 20px;
       font-family: $font-secondary;
+      font-size: 14px;
       color: $background-primary;
       background-color: $background-third;
+      border-width: 0;
+      appearance: none;
+      text-align: center;
   }
+
+  &__button-second:not([multiple]) {
+    padding-right: 5px;
+    background-repeat: no-repeat;
+    background-position: 105px 16px;
+    background-size: 10px 10px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+  }
+
   &__checkbox {
     position: absolute;
     width: 0;
@@ -285,30 +394,6 @@ export default {
     opacity: 1;
   }
 }
-.filters__button-second::after {
-    position: absolute;
-    top: 12;
-    width: 0;
-    height: 0;
-    margin-top: 5px;
-    margin-left: 12px;
-    content: '';
-    border-style: solid;
-    border-width: 8px 8px 0 8px;
-    border-color: #000000 transparent transparent transparent;
-  }
-  .filters__button-second-triangle::after {
-    position: absolute;
-    top: 12;
-    width: 0;
-    height: 0;
-    margin-top: 5px;
-    margin-left: 12px;
-    content: '';
-    border-style: solid;
-    border-width: 8px 8px 8px 0;
-    border-color: transparent #000000 transparent transparent;
-  }
   .js-string-list {
     position: absolute;
     width: 120px;
@@ -317,9 +402,15 @@ export default {
     background-color: $background-third;
     text-align: start;
   }
+
   .js-hidden {
     display: none;
   }
+
+  .products-catalog__list {
+    margin-bottom: 45px;
+  }
+
   @media screen and (max-width: 767px) {
     .filters {
       &__accordion-wrapper {
