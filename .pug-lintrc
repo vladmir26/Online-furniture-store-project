@@ -45,7 +45,7 @@
   , "validateDivTags": true
   , "validateExtensions": true
   , "validateIndentation": 2
-  , "validateLineBreaks": "CRLF"
+  , "validateLineBreaks": "LF"
   , "validateSelfClosingTags": true
 
 

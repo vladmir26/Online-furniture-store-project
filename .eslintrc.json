@@ -24,8 +24,7 @@
         "no-lonely-if": "off",
         "vue/return-in-computed-property": "off",
         "consistent-return": "off",
-        "no-console": "off",
-        "linebreak-style": "off"
+        "no-console": "off"
     }
 }
 

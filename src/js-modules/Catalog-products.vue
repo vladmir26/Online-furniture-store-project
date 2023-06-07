@@ -341,7 +341,6 @@ export default {
     background-size: 10px 10px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
   }
-
   &__checkbox {
     position: absolute;
     width: 0;
