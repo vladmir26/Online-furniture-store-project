@@ -8,7 +8,10 @@
         Filters
       </h2>
       <div class="filters__button-wrapper">
-        <button class="filters__button-first">
+        <button
+          class="filters__button-first"
+          @click="appearanceAcordion"
+        >
           Filters
         </button>
         <select
@@ -28,13 +31,22 @@
         </select>
       </div>
       <div
-        class="filters__accordion-wrapper"
-        @resize="appearanceAcordion"
+        :class="{'filters__accordion-wrapper': true, 'active-accordion': isFiltersAccordionHidden}"
       >
         <h3 class="filters__title">
-          Categories
+          <button
+            :class="{'accordion': true, 'active': filtersAccordionStatus.categories}"
+            @click="filtersAccordion"
+          >
+            Categories
+          </button>
         </h3>
-        <ul class="filters__list">
+        <ul
+          :class="{'panel filters__list-categories': true,
+                   'active': filtersAccordionStatus.categories,
+                   'filters__list-categories--scroll panel--scroll': isCategoriesScrollHidden,
+          }"
+        >
           <li
             v-for="item in categories"
             :key="item"
@@ -55,9 +67,14 @@
           </li>
         </ul>
         <h3 class="filters__title">
-          Price
+          <button
+            :class="{'accordion': true, 'active': filtersAccordionStatus.price}"
+            @click="filtersAccordion"
+          >
+            Price
+          </button>
         </h3>
-        <ul class="filters__list">
+        <ul :class="{'panel filters__list': true, 'active': filtersAccordionStatus.price}">
           <li
             v-for="item in priceRange"
             :key="item"
@@ -78,9 +95,17 @@
           </li>
         </ul>
         <h3 class="filters__title">
-          Brands
+          <button
+            :class="{'accordion': true, 'active': filtersAccordionStatus.brands}"
+            @click="filtersAccordion"
+          >
+            Brands
+          </button>
         </h3>
-        <ul class="filters__list--scroll">
+        <ul
+          :class="{'panel panel--scroll filters__list--scroll': true,
+                   'active': filtersAccordionStatus.brands}"
+        >
           <li
             v-for="item in brands"
             :key="item"
@@ -155,6 +180,13 @@ export default {
       priceFilters: [],
       sorting: 'popular',
       isLoadMoreHidden: false,
+      isFiltersAccordionHidden: false,
+      isCategoriesScrollHidden: false,
+      filtersAccordionStatus: {
+        categories: false,
+        price: false,
+        brands: false,
+      },
     };
   },
   computed: {
@@ -225,38 +257,16 @@ export default {
       .catch(console.log);
   },
   methods: {
-    filtersAccordion(event) {
-      event.target.classList.toggle('active');
-      if (event.target.nextElementSibling.style.display === 'block' && document.event.target.clientWidth < 767) {
-        event.target.nextElementSibling.style.display = 'none';
+    appearanceAcordion() {
+      if (this.isFiltersAccordionHidden === false) {
+        this.isFiltersAccordionHidden = true;
       } else {
-        event.target.nextElementSibling.style.display = 'block';
+        this.isFiltersAccordionHidden = false;
       }
     },
-    appearanceAcordion(event) {
-      if (window.screen.width < 767) {
-        event.target.innerHTML = `<button class="accordion" @click="FiltersAccordion">Categories</button>
-        <ul class="panel">
-          <li v-for="item in categories" class="filters__item">
-            <input :id="item" class="filters__checkbox" type="checkbox" name="categories" :value="item" @change="filterItems">
-            <label class="filters__label" :for="item">{{ item.charAt(0).toUpperCase() + item.slice(1) }}</label>
-          </li>
-        </ul>
-        <button class="accordion" @click="FiltersAccordion">Price</button>
-        <ul class="panel">
-          <li v-for="item in priceRange" class="filters__item">
-            <input :id="item.id" class="filters__checkbox" type="checkbox" name="price" :value="item.id" @change="filterItems">
-            <label class="filters__label" :for="item.id">{{ item.name }}</label>
-          </li>
-        </ul>
-        <button class="accordion" @click="FiltersAccordion">Brands</button>
-        <ul class="panel--scroll">
-          <li v-for="item in brands" class="filters__item">
-            <input :id="item" class="filters__checkbox" type="checkbox" name="brands" :value="item" @change="filterItems">
-            <label class="filters__label" :for="item">{{ item }}</label>
-          </li>
-        </ul>`;
-      }
+    filtersAccordion(event) {
+      const filterName = event.target.innerText.toLowerCase();
+      this.filtersAccordionStatus[filterName] = !this.filtersAccordionStatus[filterName];
     },
     createFilters() {
       this.products.forEach((product) => {
@@ -287,6 +297,7 @@ export default {
           this.counter += 1;
           this.products = this.products.concat(res.products);
           this.createFilters();
+          this.isCategoriesScrollHidden = true;
           if (res.limit < this.limit) {
             this.isLoadMoreHidden = true;
           }
@@ -312,12 +323,23 @@ export default {
      overflow-y: scroll;
   }
 
-  &__button-wrapper {
-      display: block;
+  &__list-categories {
+    margin-bottom: 48px;
+    max-height: 130px;
+  }
+
+  &__list-categories--scroll {
+    overflow-y: scroll;
   }
 
   &__button-first {
     display: none;
+  }
+
+  &__button-wrapper {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
   }
 
   &__button-second {
@@ -410,23 +432,30 @@ export default {
     margin-bottom: 45px;
   }
 
+  .accordion {
+    color: #2a254b;
+    font-family: $font-primary;
+    cursor: default;
+  }
+
   @media screen and (max-width: 767px) {
     .filters {
       &__accordion-wrapper {
-        display: block;
+        display: none;
         margin-right: 50px;
+      }
+      &__button-first {
+        display: inline-block;
       }
       &__sorting {
         display: block;
         margin-top: 20px;
       }
-      &__list--scroll {
-        display: none;
-      }
     }
     .accordion {
       background-color: #eee;
-      color: #444;
+      color: #2a254b;
+      font-family: $font-primary;
       cursor: pointer;
       padding: 18px;
       width: 100%;
@@ -435,15 +464,27 @@ export default {
       outline: none;
       transition: 0.4s;
     }
+
+    .accordion--brands {
+      padding-top: 20px;
+    }
+
+    .active-accordion {
+      display: block;
+    }
     .active, .accordion:hover {
       background-color: #ccc;
     }
    .panel {
-      padding: 0 18px;
+      padding: 0 18px 20px;
       background-color: white;
       display: none;
       overflow: hidden;
-  }
+
+      &.active {
+        display: block;
+      }
+    }
   .panel--scroll {
       padding: 0 18px;
       background-color: white;

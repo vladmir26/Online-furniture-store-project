@@ -86,10 +86,6 @@
 
 @media screen and (max-width: 767px) {
   .filters {
-    &__title {
-      display: none;
-    }
-
     &__list {
       display: none;
     }
@@ -101,10 +97,11 @@
 
     &__button-first {
       position: relative;
-      width: 163px;
-      height: 56px;
+      width: 120px;
+      height: 40px;
       margin-right: 16px;
       font-family: $font-secondary;
+      font-size: 14px;
       color: $background-primary;
       background-color: $background-third;
     }
@@ -128,7 +125,7 @@
     content: '';
     border-color: #000 transparent transparent transparent;
     border-style: solid;
-    border-width: 8px 8px 0 8px;
+    border-width: 5px 5px 0 5px;
   }
 
   .filters__button-second::after {
