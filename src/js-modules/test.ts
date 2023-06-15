@@ -37,9 +37,9 @@ const admin1: Admin = {
 
 
 
-function login (user:{login: string, password: string}):void {
+function login(user: { login: string, password: string }): void {
   if (user.login.length > 0, user.password.length > 0) {
-    console.log (`Привет ${user.login}`);
+    console.log(`Привет ${user.login}`);
   }
 }
 

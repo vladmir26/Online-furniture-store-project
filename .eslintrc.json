@@ -19,11 +19,8 @@
     },
     "ignorePatterns": ["test.ts"],
     "rules": {
+        "vue/no-side-effects-in-computed-properties" : "off",
         "no-param-reassign": "off",
-        "no-else-return": "off",
-        "no-lonely-if": "off",
-        "vue/return-in-computed-property": "off",
-        "consistent-return": "off",
         "no-console": "off"
     }
 }

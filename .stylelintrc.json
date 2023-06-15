@@ -1,10 +1,7 @@
 {
-	"extends": [
-		"stylelint-config-standard", 
-		"stylelint-config-recess-order"
-	],
-
-	"customSyntax": "postcss-scss"
-     
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order"
+  ],
+  "customSyntax": "postcss-scss"
 }
- 

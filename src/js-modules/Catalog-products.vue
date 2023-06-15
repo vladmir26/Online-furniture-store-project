@@ -31,11 +31,12 @@
         </select>
       </div>
       <div
-        :class="{'filters__accordion-wrapper': true, 'active-accordion': isFiltersAccordionHidden}"
+        :class="{ 'filters__accordion-wrapper': true,
+                  'active-accordion': isFiltersAccordionHidden }"
       >
         <h3 class="filters__title">
           <button
-            :class="{'accordion': true, 'active': filtersAccordionStatus.categories}"
+            :class="{ 'accordion': true, 'active': filtersAccordionStatus.categories }"
             @click="filtersAccordion"
           >
             Categories
@@ -68,13 +69,13 @@
         </ul>
         <h3 class="filters__title">
           <button
-            :class="{'accordion': true, 'active': filtersAccordionStatus.price}"
+            :class="{ 'accordion': true, 'active': filtersAccordionStatus.price }"
             @click="filtersAccordion"
           >
             Price
           </button>
         </h3>
-        <ul :class="{'panel filters__list': true, 'active': filtersAccordionStatus.price}">
+        <ul :class="{ 'panel filters__list': true, 'active': filtersAccordionStatus.price }">
           <li
             v-for="item in priceRange"
             :key="item"
@@ -96,15 +97,17 @@
         </ul>
         <h3 class="filters__title">
           <button
-            :class="{'accordion': true, 'active': filtersAccordionStatus.brands}"
+            :class="{ 'accordion': true, 'active': filtersAccordionStatus.brands }"
             @click="filtersAccordion"
           >
             Brands
           </button>
         </h3>
         <ul
-          :class="{'panel panel--scroll filters__list--scroll': true,
-                   'active': filtersAccordionStatus.brands}"
+          :class="{
+            'panel panel--scroll filters__list--scroll': true,
+            'active': filtersAccordionStatus.brands
+          }"
         >
           <li
             v-for="item in brands"
@@ -217,34 +220,39 @@ export default {
     productsfiltered() {
       if (!this.filters.length) {
         return this.products;
-      } else {
-        const resArr = [];
-        this.products.forEach((item) => {
-          this.filters.forEach((filter) => {
-            if (typeof filter === 'string') {
-              if ((filter === item.brand || filter === item.category) && !resArr.includes(item)) {
-                resArr.push(item);
-              }
-            } else {
-              if ((item.price >= filter.minValue && item.price <= filter.maxValue)
-              && !resArr.includes(item)) {
-                resArr.push(item);
-              }
-            }
-          });
-        });
-        return resArr;
       }
+      const resArr = [];
+      this.products.forEach((item) => {
+        this.filters.forEach((filter) => {
+          if (typeof filter === 'string' && (filter === item.brand || filter === item.category) && !resArr.includes(item)) {
+            resArr.push(item);
+          }
+          if (typeof filter !== 'string' && ((item.price >= filter.minValue && item.price <= filter.maxValue) && !resArr.includes(item))) {
+            resArr.push(item);
+          }
+        });
+      });
+
+      if (resArr.length > 0) {
+        this.isLoadMoreHidden = true;
+      }
+
+      return resArr;
     },
     productsSorted() {
       const sorted = [...this.productsfiltered];
       if (this.sorting === 'popular') {
         return this.productsfiltered;
-      } else if (this.sorting === 'cheap') {
+      }
+
+      if (this.sorting === 'cheap') {
         return sorted.sort((a, b) => a.price - b.price);
-      } else if (this.sorting === 'expensive') {
+      }
+
+      if (this.sorting === 'expensive') {
         return sorted.sort((a, b) => b.price - a.price);
       }
+      return false;
     },
   },
   created() {
@@ -288,6 +296,7 @@ export default {
         }
       } else {
         this.filters = this.filters.filter((item) => (typeof item === 'string' && item !== event.target.value) || (typeof item === 'object' && item.id !== +event.target.value));
+        this.isLoadMoreHidden = !this.isLoadMoreHidden;
       }
     },
     loadingProducts() {
@@ -309,7 +318,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 @import "../styles/components/variables.scss";
 
 .filters {
@@ -318,9 +326,9 @@ export default {
   }
 
   &__list--scroll {
-     width: 270px;
-     max-height: 250px;
-     overflow-y: scroll;
+    width: 270px;
+    max-height: 250px;
+    overflow-y: scroll;
   }
 
   &__list-categories {
@@ -337,23 +345,21 @@ export default {
   }
 
   &__button-wrapper {
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
+    display: block;
   }
 
   &__button-second {
-      position: relative;
-      width: 120px;
-      height: 40px;
-      margin-bottom: 20px;
-      font-family: $font-secondary;
-      font-size: 14px;
-      color: $background-primary;
-      background-color: $background-third;
-      border-width: 0;
-      appearance: none;
-      text-align: center;
+    position: relative;
+    width: 120px;
+    height: 40px;
+    margin-bottom: 20px;
+    font-family: $font-secondary;
+    font-size: 14px;
+    color: $background-primary;
+    background-color: $background-third;
+    border-width: 0;
+    appearance: none;
+    text-align: center;
   }
 
   &__button-second:not([multiple]) {
@@ -363,6 +369,7 @@ export default {
     background-size: 10px 10px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
   }
+
   &__checkbox {
     position: absolute;
     width: 0;
@@ -406,93 +413,107 @@ export default {
     transform: rotate(45deg);
   }
 
-  &__checkbox:checked + &__label::after {
+  &__checkbox:checked+&__label::after {
     opacity: 1;
   }
 
-  &__checkbox:checked + &__label::before {
+  &__checkbox:checked+&__label::before {
     background-color: #4e4d93;
     opacity: 1;
   }
 }
-  .js-string-list {
-    position: absolute;
-    width: 120px;
-    margin-bottom: 35px;
-    margin-left: 95px;
-    background-color: $background-third;
-    text-align: start;
-  }
 
-  .js-hidden {
-    display: none;
-  }
+.js-string-list {
+  position: absolute;
+  width: 120px;
+  margin-bottom: 35px;
+  margin-left: 95px;
+  background-color: $background-third;
+  text-align: start;
+}
 
-  .products-catalog__list {
-    margin-bottom: 45px;
+.js-hidden {
+  display: none;
+}
+
+.products-catalog__list {
+  margin-bottom: 45px;
+}
+
+.accordion {
+  color: #2a254b;
+  font-family: $font-primary;
+  cursor: default;
+}
+
+@media screen and (max-width: 767px) {
+  .filters {
+    &__accordion-wrapper {
+      display: none;
+      margin-right: 50px;
+    }
+
+    &__button-wrapper {
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &__button-first {
+      display: inline-block;
+    }
+
+    &__sorting {
+      display: block;
+      margin-top: 20px;
+    }
   }
 
   .accordion {
+    background-color: #eee;
     color: #2a254b;
     font-family: $font-primary;
-    cursor: default;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
   }
 
-  @media screen and (max-width: 767px) {
-    .filters {
-      &__accordion-wrapper {
-        display: none;
-        margin-right: 50px;
-      }
-      &__button-first {
-        display: inline-block;
-      }
-      &__sorting {
-        display: block;
-        margin-top: 20px;
-      }
-    }
-    .accordion {
-      background-color: #eee;
-      color: #2a254b;
-      font-family: $font-primary;
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      transition: 0.4s;
-    }
+  .accordion--brands {
+    padding-top: 20px;
+  }
 
-    .accordion--brands {
-      padding-top: 20px;
-    }
+  .active-accordion {
+    display: block;
+  }
 
-    .active-accordion {
+  .active,
+  .accordion:hover {
+    background-color: #ccc;
+  }
+
+  .panel {
+    padding: 0 18px 20px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+
+    &.active {
       display: block;
     }
-    .active, .accordion:hover {
-      background-color: #ccc;
-    }
-   .panel {
-      padding: 0 18px 20px;
-      background-color: white;
-      display: none;
-      overflow: hidden;
+  }
 
-      &.active {
-        display: block;
-      }
-    }
   .panel--scroll {
-      padding: 0 18px;
-      background-color: white;
-      display: none;
-      overflow: hidden;
-      width: 300px;
-      max-height: 250px;
-      overflow-y: scroll;
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    width: 300px;
+    max-height: 250px;
+    overflow-y: scroll;
   }
 }
 </style>
