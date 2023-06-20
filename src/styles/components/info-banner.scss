@@ -1,26 +1,32 @@
 @import "variables.scss";
 
 .info-banner {
+  background-color: $background-primary;
+
   &__wrapper {
+    position: relative;
     display: flex;
-    flex-basis: 1440px;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     height: 41px;
     font-family: $font-secondary;
     font-size: 14px;
     color: $color-primary;
-    background-color: $background-primary;
   }
 
   &__inner-wrapper {
     display: flex;
-    justify-self: center;
   }
 
   &__close-wrapper {
+    position: absolute;
+    right: 16px;
     display: block;
     margin-left: auto;
+  }
+
+  &__close-button-link {
+    cursor: pointer;
   }
 
   &__close {

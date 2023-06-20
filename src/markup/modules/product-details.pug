@@ -1,11 +1,26 @@
 section.product-details
-  .product-details__wrapper 
-    .product-details__image-inner-wrapper 
+  .product-details__wrapper.container__grey-wrapper 
+    .product-details__image-inner-wrapper
       img.product-details__image(src='../../images/content-image/image-fourteen.png', alt='image-fourteen')
     .product-details__description-inner-wrapper
-      h1.visially-hidden Product
-      h2.product-details__heading The Dandy Chair
-      p.product-details__primary-text £250
-      h3.product-details__title Product description
-      p.product-details__secondary-text A timeless design, with premium materials features as one of our most popular and iconic pieces. The dandy chair is perfect for any stylish living space with beech legs and lambskin leather upholstery.
-      h3.product-details__title Dimensions
+      h1.product-details__heading The Dandy Chair
+      p.product-details__price-text £250
+      p.product-details__title-text Product description
+      p.product-details__description-text A timeless design, with premium materials features as one of our most popular and iconic pieces. The dandy chair is perfect for any stylish living space with beech legs and lambskin leather upholstery.
+      p.product-details__title-text Dimensions
+      .product-details__table-wrapper
+        .product-details__table-inner-wrapper
+          p.product-details__title-table Height
+          p.product-details__text-table 110cm
+        .product-details__table-inner-wrapper
+          p.product-details__title-table Width 
+          p.product-details__text-table 75cm
+        .product-details__table-inner-wrapper
+          p.product-details__title-table Depth
+          p.product-details__text-table 50cm
+      p.product-details__title-text Quantitity
+      input.product-details__input(type='number')
+      .product-details__button-wrapper
+        button.product-details__button(type='submit') Add to cart
+        a.product-details__link(href='#') 
+          button.product-details__button-link(type='button') Save to favorites

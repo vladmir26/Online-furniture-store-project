@@ -156,7 +156,7 @@
       </li>
     </ul>
     <div
-      v-show="!isLoadMoreHidden"
+      v-show="filters.length && !isLoadMoreHidden"
       class="products-catalog__button-link-wrapper"
     >
       <a

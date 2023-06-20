@@ -32,6 +32,11 @@ body {
   &__white-wrapper--brand-about {
     width: 50%;
   }
+
+  &__grey-wrapper {
+    padding: 50px 80px;
+    background-color: $background-third;
+  }
 }
 
 @media screen and (max-width: 767px) {
