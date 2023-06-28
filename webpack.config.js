@@ -1,5 +1,6 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const webpack = require('webpack');
 
@@ -15,6 +16,9 @@ module.exports = {
   plugins: [
     new ESLintPlugin({
       extensions: ['js', 'vue'],
+    }),
+    new StyleLintPlugin({
+      files: ['scss'],
     }),
     new VueLoaderPlugin(),
     new webpack.ProvidePlugin({

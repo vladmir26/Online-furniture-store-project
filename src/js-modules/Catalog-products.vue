@@ -156,7 +156,7 @@
       </li>
     </ul>
     <div
-      v-show="filters.length && !isLoadMoreHidden"
+      v-show="!filters.length && !isLoadMoreHidden"
       class="products-catalog__button-link-wrapper"
     >
       <a
@@ -233,10 +233,6 @@ export default {
         });
       });
 
-      if (resArr.length > 0) {
-        this.isLoadMoreHidden = true;
-      }
-
       return resArr;
     },
     productsSorted() {
@@ -296,7 +292,6 @@ export default {
         }
       } else {
         this.filters = this.filters.filter((item) => (typeof item === 'string' && item !== event.target.value) || (typeof item === 'object' && item.id !== +event.target.value));
-        this.isLoadMoreHidden = !this.isLoadMoreHidden;
       }
     },
     loadingProducts() {
@@ -323,6 +318,10 @@ export default {
 .filters {
   &__sorting {
     margin-bottom: 20px;
+  }
+
+  &__accordion-wrapper {
+    margin-bottom: 50px;
   }
 
   &__list--scroll {

@@ -10,7 +10,8 @@
     },
     "plugins": [
         "vue",
-        "editorconfig"
+        "editorconfig",
+        "vue-scoped-css"
     ],
     "extends": [
         "airbnb-base",
