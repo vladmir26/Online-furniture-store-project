@@ -262,11 +262,7 @@ export default {
   },
   methods: {
     appearanceAcordion() {
-      if (this.isFiltersAccordionHidden === false) {
-        this.isFiltersAccordionHidden = true;
-      } else {
-        this.isFiltersAccordionHidden = false;
-      }
+      this.isFiltersAccordionHidden = !this.isFiltersAccordionHidden;
     },
     filtersAccordion(event) {
       const filterName = event.target.innerText.toLowerCase();

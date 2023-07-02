@@ -23,7 +23,6 @@
     },
     "ignorePatterns": ["test.ts"],
     "rules": {
-        "vue/no-side-effects-in-computed-properties" : "off",
         "no-param-reassign": "off",
         "no-console": "off"
     }

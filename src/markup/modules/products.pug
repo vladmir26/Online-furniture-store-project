@@ -5,20 +5,18 @@ mixin products (heading='Our popular products', button='View collection')
       ul.products__list
         li.products__item.products__item--wide
           a.products__link(href='#')
-            img.products__image.products__image--wide(src='./images/content-image/image-fifth.png', alt='image-fifth')
+            img.products__image.products__image--wide(src='/images/content-image/image-fifth.png', alt='image-fifth')
             h3.products__title The Poplar suede sofa
             p.products__text £980 
         li.products__item
           a.products__link(href='#') 
-            img.products__image(src='./images/content-image/image-first.png', alt='image-first')
+            img.products__image(src='/images/content-image/image-first.png', alt='image-first')
             h3.products__title The Dandy chair
             p.products__text £250
         li.products__item
           a.products__link(href='#')
-            img.products__image(src='./images/content-image/image-sixth.png', alt='image-sixth')
+            img.products__image(src='/images/content-image/image-sixth.png', alt='image-sixth')
             h3.products__title The Dandy chair
             p.products__text £250
       .products__button-link-wrapper
         a.products__button-link(href='#')= button
-
-+products()

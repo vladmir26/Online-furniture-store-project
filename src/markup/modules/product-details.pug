@@ -5,22 +5,26 @@ section.product-details
     .product-details__description-inner-wrapper
       h1.product-details__heading The Dandy Chair
       p.product-details__price-text £250
-      p.product-details__title-text Product description
+      h2.product-details__title Product description
       p.product-details__description-text A timeless design, with premium materials features as one of our most popular and iconic pieces. The dandy chair is perfect for any stylish living space with beech legs and lambskin leather upholstery.
-      p.product-details__title-text Dimensions
+      h2.product-details__title Dimensions
       .product-details__table-wrapper
-        .product-details__table-inner-wrapper
-          p.product-details__title-table Height
-          p.product-details__text-table 110cm
-        .product-details__table-inner-wrapper
-          p.product-details__title-table Width 
-          p.product-details__text-table 75cm
-        .product-details__table-inner-wrapper
-          p.product-details__title-table Depth
-          p.product-details__text-table 50cm
-      p.product-details__title-text Quantitity
-      input.product-details__input(type='number')
-      .product-details__button-wrapper
-        button.product-details__button(type='submit') Add to cart
-        a.product-details__link(href='#') 
-          button.product-details__button-link(type='button') Save to favorites
+        dl.product-details__table-inner-wrapper
+          dt.product-details__title-table Height
+          dd.product-details__text-table 110cm
+        dl.product-details__table-inner-wrapper
+          dt.product-details__title-table Width 
+          dd.product-details__text-table 75cm
+        dl.product-details__table-inner-wrapper
+          dt.product-details__title-table Depth
+          dd.product-details__text-table 50cm
+      form(action='', method='GET') 
+        label.product-details__title-text(for='product-quantity') Quantitity
+        .product-details__input-wrapper
+          button.product-details__minus(type='button') -
+          input.product-details__input#product-quantity(type='number', name='product-quantity', value='1') 
+          button.product-details__plus(type='button') +
+        .product-details__button-wrapper
+          button.product-details__button(type='submit') Add to cart
+          a.product-details__link(href='#') 
+            button.product-details__button-link(type='button') Save to favorites
