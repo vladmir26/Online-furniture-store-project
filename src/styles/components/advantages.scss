@@ -41,6 +41,10 @@
       padding-bottom: 35px;
     }
 
+    &__item-grey {
+      background-color: $background-third;
+    }
+
     &__item:last-child {
       padding-bottom: 0;
     }

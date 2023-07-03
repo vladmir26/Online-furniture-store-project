@@ -2,7 +2,8 @@ extends markup/layout.pug
 
 block content 
   include markup/modules/brand.pug 
-  include markup/modules/advantages.pug 
+  include markup/modules/advantages.pug
+  +advantages(class=!advantages__item)
   include markup/modules/ceramics.pug
   include markup/modules/products.pug
   +products()
