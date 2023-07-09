@@ -34,6 +34,7 @@
 
   &__product-count-active {
     display: block;
+    animation: addToCart 2s infinite;
   }
 
   &__cart-link {
@@ -124,6 +125,20 @@
     color: $background-primary;
     background-color: $color-primary;
     border: 3px solid $background-primary;
+  }
+}
+
+@keyframes addToCart {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
 

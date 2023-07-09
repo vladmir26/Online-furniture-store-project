@@ -3,6 +3,10 @@
 .info-banner {
   background-color: $background-primary;
 
+  &.hidden {
+    display: none;
+  }
+
   &__wrapper {
     position: relative;
     display: flex;

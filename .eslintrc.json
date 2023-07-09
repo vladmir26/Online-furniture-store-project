@@ -23,6 +23,7 @@
     },
     "ignorePatterns": ["test.ts"],
     "rules": {
+        "no-new": "off",
         "no-param-reassign": "off",
         "no-console": "off"
     }

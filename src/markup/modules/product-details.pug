@@ -1,4 +1,4 @@
-section.product-details
+section.product-details.js-product-details
   .product-details__wrapper.container__grey-wrapper 
     .product-details__image-inner-wrapper
       img.product-details__image(src='../../images/content-image/image-fourteen.png', alt='image-fourteen')
@@ -28,3 +28,10 @@ section.product-details
           button.product-details__button(type='submit') Add to cart
           a.product-details__link(href='#') 
             button.product-details__button-link(type='button') Save to favorites
+    .product-details__modal 
+      .product-details__modal-content 
+        p.product-details__modal-text All products added to cart
+        .product-details__modal-wrapper
+          a.product-details-modal-link(href='#')
+            button.product-details__modal-button-link Go to cart
+          button.product-details__modal-button Stay on this page
