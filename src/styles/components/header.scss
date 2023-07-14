@@ -34,7 +34,10 @@
 
   &__product-count-active {
     display: block;
-    animation: addToCart 2s infinite;
+  }
+
+  &__product-count-active-animation {
+    animation: addToCart 2s 3;
   }
 
   &__cart-link {

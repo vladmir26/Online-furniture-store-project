@@ -6,6 +6,7 @@ export default class ProductDetails {
     const addCart = document.querySelector('.product-details__button');
     const productCount = document.querySelector('.wrapper__product-count');
     const modal = document.querySelector('.product-details__modal');
+    // const modalContent = document.querySelector('.product-details__modal-content');
     const modalbutton = document.querySelector('.product-details__modal-button');
     const body = document.querySelector('.body');
 
@@ -28,14 +29,19 @@ export default class ProductDetails {
       input.value = 1;
       modal.classList.add('js-modal-active');
       body.classList.add('js-scroll');
+      productCount.classList.add('wrapper__product-count-active-animation');
     });
     modalbutton.addEventListener('click', () => {
       modal.classList.remove('js-modal-active');
       body.classList.remove('js-scroll');
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
     });
+
+    // Пытался сделать скрытие модального окна по клику на серую подложку
+  /* window.addEventListener('click', (event) => {
+      if (event.target !== modalContent) {
+        modal.classList.remove('js-modal-active');
+        body.classList.remove('js-scroll');
+      }
+    }); */
   }
 }

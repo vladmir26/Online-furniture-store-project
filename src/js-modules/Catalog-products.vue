@@ -256,6 +256,7 @@ export default {
       .then((res) => res.json())
       .then((res) => {
         this.products = res.products;
+        console.log(res);
         this.createFilters();
       })
       .catch(console.log);
