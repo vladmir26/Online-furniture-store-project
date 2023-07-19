@@ -3,10 +3,10 @@ extends markup/layout.pug
 block content 
   include markup/modules/brand.pug 
   include markup/modules/advantages.pug
-  +advantages(class=!advantages__item)
+  +advantages('advantages__item', false)
   include markup/modules/ceramics.pug
   include markup/modules/products.pug
   +products()
   include markup/modules/subscription.pug 
-  include markup/modules/brand-about.pug 
-  include markup/modules/vue.pug
+  include markup/modules/brand-about.pug
+  +brandAbout('brand-about__wrapper', './images/content-image/image-seventh.png', 'image-seventh', true)

@@ -8,7 +8,6 @@
   }
 
   &__image-inner-wrapper {
-    width: 100%;
     min-width: 607px;
   }
 
@@ -119,12 +118,25 @@
     background-color: $background-primary;
   }
 
+  &__button:hover {
+    color: $background-primary;
+    background-color: $color-primary;
+  }
+
   &__button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 178px;
     height: 56px;
     font-family: $font-secondary;
     color: $background-primary;
     background-color: $color-primary;
+    opacity: 1;
+  }
+
+  &__button-link:hover {
+    color: $color-fourth;
   }
 
   &__modal {
@@ -136,13 +148,18 @@
     width: 100%;
     height: 100%;
     overflow: auto;
+    visibility: hidden;
     background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
   }
 
   &__modal-content {
     width: 50%;
     padding: 20px;
     margin: 15% auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     background-color: $background-third;
     border: 1px solid #888;
   }
@@ -182,4 +199,23 @@ input::-webkit-inner-spin-button {
 
 .js-modal-active {
   display: block;
+}
+
+.js-modal-active-animation {
+  animation: modalFadeIn 7s ease forwards;
+}
+
+@keyframes modalFadeIn {
+  0% {
+    width: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
 }

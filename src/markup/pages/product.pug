@@ -5,4 +5,6 @@ block content
   include ../modules/products.pug 
   +products('You might also love these', 'See collection')
   include ../modules/advantages.pug
-  +advantages(class=!advantages__item-grey)
+  +advantages('advantages__item-grey', 'advantages__item-inner-wrapper', true)
+  include ../modules/brand-about.pug 
+  +brandAbout('brand-about__wrapper-reverse', '../../images/content-image/image-fiftteen.png', 'image-fifteen', false)

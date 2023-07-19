@@ -18,6 +18,7 @@ $(window).on('load', () => {
   if (storage) {
     const productCount = document.querySelector('.wrapper__product-count');
     productCount.classList.add('wrapper__product-count-active');
+    productCount.classList.remove('wrapper__product-count-active-animation');
     productCount.textContent = storage;
   }
 });

@@ -24,24 +24,28 @@ export default class ProductDetails {
     addCart.addEventListener('click', (event) => {
       event.preventDefault();
       productCount.classList.add('wrapper__product-count-active');
-      productCount.classList.remove('wrapper__product-count-active-animation');
-      void productCount.offsetWidth;
-      productCount.classList.add('wrapper__product-count-active-animation');
       productCount.textContent = +(productCount.textContent) + (+(input.value));
       localStorage.setItem('count', productCount.textContent);
       input.value = 1;
       modal.classList.add('js-modal-active');
+      modal.classList.add('js-modal-active-animation');
       body.classList.add('js-scroll');
     });
     modalbutton.addEventListener('click', () => {
       modal.classList.remove('js-modal-active');
       body.classList.remove('js-scroll');
+      productCount.classList.remove('wrapper__product-count-active-animation');
+      void productCount.offsetWidth;
+      productCount.classList.add('wrapper__product-count-active-animation');
     });
 
     modal.addEventListener('click', (event) => {
       if (!modalContent.contains(event.target)) {
         modal.classList.remove('js-modal-active');
         body.classList.remove('js-scroll');
+        productCount.classList.remove('wrapper__product-count-active-animation');
+        void productCount.offsetWidth;
+        productCount.classList.add('wrapper__product-count-active-animation');
       }
     });
   }

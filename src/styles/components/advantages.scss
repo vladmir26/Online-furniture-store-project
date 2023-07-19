@@ -11,6 +11,17 @@
     width: 270px;
   }
 
+  &__item-grey {
+    max-width: 305px;
+    margin-left: 22px;
+    background-color: $background-third;
+  }
+
+  &__item-inner-wrapper {
+    max-width: 100%;
+    padding: 48px;
+  }
+
   &__heading {
     font-size: 24px;
     text-align: center;
@@ -39,10 +50,6 @@
 
     &__item {
       padding-bottom: 35px;
-    }
-
-    &__item-grey {
-      background-color: $background-third;
     }
 
     &__item:last-child {
