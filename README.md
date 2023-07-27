@@ -5,11 +5,11 @@
 В данный момент проект находится в процессе разработки. 
 Ссылка на код: https://github.com/vladmir26/Online-furniture-store-project
 Используемые технологии: 
-- PUG, 
-- SASS(SCSS), 
-- JavaScript, JQuery, Vue 3,
-- Webpack, Gulp, 
-- семантическая верстка, 
-- Flexbox, 
-- Grid, БЭМ, 
-- адаптивная верстка с помощью медиа-выражений.  
+ - PUG, 
+ - SASS(SCSS), 
+ - JavaScript, JQuery, Vue 3,
+ - Webpack, Gulp, 
+ - семантическая верстка, 
+ - Flexbox, 
+ - Grid, БЭМ, 
+ - адаптивная верстка с помощью медиа-выражений.  
