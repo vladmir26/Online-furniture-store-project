@@ -16,7 +16,16 @@
  - Flexbox, 
  - Grid, 
  - БЭМ, 
- - адаптивная верстка с помощью медиа-выражений  
+ - адаптивная верстка с помощью медиа-выражений
+
+Ниже представлен скриншот первой и второй страниц сайта:
+
+<div style='display: flex;'>
+<img src='./src/img/content-image/Online-furniture-store-project.png' height='600' alt=''>
+<img src='./src/img/content-image/Online-furniture-store-project-second-page.png' height='600' alt=''>
+</div>
+
+Вторая страница представляет собой каталог товаров, не включающих в себя мебель. Каталог товаров создан в виде компонента Vue 3. 
 
 <h2>Installation</h2>
 
