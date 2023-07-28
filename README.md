@@ -21,7 +21,7 @@
 Ниже представлен скриншот первой и второй страниц сайта:
 
 <div style='display: flex;'>
-<img src='./src/img/content-image/Online-furniture-store-project.png' height='600' alt='' style='padding-right: 20;'>
+<img src='./src/img/content-image/Online-furniture-store-project.png' height='600' alt='' style='padding-right: 70;'>
 <img src='./src/img/content-image/Online-furniture-store-project-second-page.png' height='600' alt=''>
 </div>
 
