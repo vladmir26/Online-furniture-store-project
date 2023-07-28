@@ -20,9 +20,9 @@
 
 Ниже представлен скриншот первой и второй страниц сайта:
 
-<div style='display: flex;'>
-<img src='./src/img/content-image/Online-furniture-store-project.png' height='600' alt='' style='padding-right: 70;'>
-<img src='./src/img/content-image/Online-furniture-store-project-second-page.png' height='600' alt=''>
+<div style='display: flex; justify-content: space-between;'>
+<img src='./src/img/content-image/Online-furniture-store-project.png' height='600' alt=''/>
+<img src='./src/img/content-image/Online-furniture-store-project-second-page.png' height='600' alt=''/>
 </div>
 
 Вторая страница представляет собой каталог товаров, не включающих в себя мебель. Каталог товаров создан в виде компонента Vue 3. 
