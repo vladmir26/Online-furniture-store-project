@@ -4,7 +4,6 @@
 
 Проект многостраничного сайта интернет-магазина мебели  
 В данный момент проект находится в процессе разработки. 
-Ссылка на код: https://github.com/vladmir26/Online-furniture-store-project
 Используемые технологии: 
  - PUG, 
  - SASS(SCSS), 
@@ -18,3 +17,15 @@
  - Grid, 
  - БЭМ, 
  - адаптивная верстка с помощью медиа-выражений  
+
+<h2>Installation</h2>
+
+Установить зависимости npm
+<code>npm i</code> 
+
+Сборка проекта
+<code>npm run build-prod</code>
+
+Запустить сервер 
+<code>npm run start</code>
+
