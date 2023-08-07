@@ -17,4 +17,11 @@ html
     main.main-primary
       block content 
     include modules/footer.pug
+    .product-details__modal
+      .product-details__modal-content 
+        p.product-details__modal-text All products added to cart
+        .product-details__modal-wrapper
+          a.product-details-modal-link(href='#')
+            button.product-details__modal-button-link Go to cart
+          button.product-details__modal-button Stay on this page
   script(src='/index.js')

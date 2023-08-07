@@ -143,25 +143,27 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
-    display: none;
+    z-index: -1;
+    display: block;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    visibility: hidden;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
   }
 
   &__modal-content {
-    width: 50%;
+    width: 100%;
+    max-width: 800px;
     padding: 20px;
-    margin: 15% auto;
+    margin: auto;
+    margin-top: 20%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     background-color: $background-third;
     border: 1px solid #888;
+    transform: translateY(-50%);
   }
 
   &__modal-text {
@@ -198,24 +200,19 @@ input::-webkit-inner-spin-button {
 }
 
 .js-modal-active {
-  display: block;
+  z-index: 4;
 }
 
 .js-modal-active-animation {
-  animation: modalFadeIn 7s ease forwards;
+  animation: modalFadeIn 0.5s ease forwards;
 }
 
 @keyframes modalFadeIn {
   0% {
-    width: 0;
-    visibility: hidden;
     opacity: 0;
   }
 
   100% {
-    width: 100%;
-    visibility: visible;
     opacity: 1;
-    transform: scale(1);
   }
 }

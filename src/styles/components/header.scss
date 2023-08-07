@@ -1,5 +1,14 @@
 @import "variables.scss";
 
+.header {
+  padding-top: 40px;
+  transition: padding-top 2s;
+}
+
+.header-animation {
+  padding-top: 0;
+}
+
 .wrapper {
   position: relative;
   display: flex;

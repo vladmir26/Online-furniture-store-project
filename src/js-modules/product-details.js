@@ -33,18 +33,18 @@ export default class ProductDetails {
     });
     modalbutton.addEventListener('click', () => {
       modal.classList.remove('js-modal-active');
+      modal.classList.remove('js-modal-active-animation');
       body.classList.remove('js-scroll');
       productCount.classList.remove('wrapper__product-count-active-animation');
-      void productCount.offsetWidth;
       productCount.classList.add('wrapper__product-count-active-animation');
     });
 
     modal.addEventListener('click', (event) => {
       if (!modalContent.contains(event.target)) {
         modal.classList.remove('js-modal-active');
+        modal.classList.remove('js-modal-active-animation');
         body.classList.remove('js-scroll');
         productCount.classList.remove('wrapper__product-count-active-animation');
-        void productCount.offsetWidth;
         productCount.classList.add('wrapper__product-count-active-animation');
       }
     });

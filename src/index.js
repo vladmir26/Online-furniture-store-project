@@ -12,6 +12,7 @@ $(window).on('load', () => {
   const infoBannerClosed = localStorage.getItem('infoBannerClosed');
   if (infoBannerClosed && infoBannerClosed === 'true') {
     $('.info-banner').addClass('hidden');
+    $('.header').removeClass('header');
   }
 
   const storage = localStorage.getItem('count');
