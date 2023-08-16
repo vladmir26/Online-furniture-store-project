@@ -21,10 +21,6 @@
     font-size: 24px;
   }
 
-  &__product-heading {
-    font-size: 32px;
-  }
-
   &__text-primary {
     padding-top: 25px;
     font-family: $font-secondary;
@@ -36,37 +32,6 @@
     margin-bottom: 50px;
     font-family: $font-secondary;
     color: #505977;
-  }
-
-  &__product-text {
-    font-family: $font-secondary;
-  }
-
-  &__product-form {
-    text-align: center;
-  }
-
-  &__product-input {
-    width: 354px;
-    height: 56px;
-    padding-right: 30px;
-    padding-left: 30px;
-    background-color: $background-third;
-    border: 2px solid $background-third;
-  }
-
-  &__product-input::placeholder {
-    color: $background-primary;
-    opacity: 0.2;
-  }
-
-  &__product-button {
-    height: 56px;
-    padding: 16px 32px;
-    font-family: $font-secondary;
-    color: $color-primary;
-    background-color: $background-primary;
-    border: $background-primary;
   }
 
   &__top-wrapper {

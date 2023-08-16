@@ -5,6 +5,48 @@
     display: flex;
   }
 
+  &__right-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__heading {
+    font-size: 32px;
+  }
+
+  &__text {
+    font-family: $font-secondary;
+  }
+
+  &__form {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  &__input {
+    width: 354px;
+    height: 56px;
+    padding-right: 30px;
+    padding-left: 30px;
+    background-color: $background-third;
+    border: 2px solid $background-third;
+  }
+
+  &__input::placeholder {
+    color: $background-primary;
+    opacity: 0.2;
+  }
+
+  &__button {
+    height: 56px;
+    padding: 16px 32px;
+    font-family: $font-secondary;
+    color: $color-primary;
+    background-color: $background-primary;
+    border: $background-primary;
+  }
+
   &__image-wrapper {
     width: 50%;
   }
