@@ -10,9 +10,9 @@ createApp(message).mount('#catalog');
 
 $(window).on('load', () => {
   const infoBannerClosed = localStorage.getItem('infoBannerClosed');
-  if (infoBannerClosed && infoBannerClosed === 'true') {
-    $('.info-banner').addClass('hidden');
-    $('.header').removeClass('header');
+  if (!(infoBannerClosed && infoBannerClosed === 'true')) {
+    $('.info-banner').removeClass('hidden');
+    $('#header').addClass('header');
   }
 
   const storage = localStorage.getItem('count');

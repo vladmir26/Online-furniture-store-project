@@ -38,7 +38,7 @@ export default class ProductDetails {
       productCount.classList.add('wrapper__product-count-active-animation');
       setTimeout(() => {
         productCount.classList.remove('wrapper__product-count-active-animation');
-      }, '2000');
+      }, '6000');
     });
 
     modal.addEventListener('click', (event) => {
@@ -49,7 +49,7 @@ export default class ProductDetails {
         productCount.classList.add('wrapper__product-count-active-animation');
         setTimeout(() => {
           productCount.classList.remove('wrapper__product-count-active-animation');
-        }, '2000');
+        }, '6000');
       }
     });
   }
