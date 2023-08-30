@@ -55,8 +55,6 @@
 
 /*! ./js-modules/subsription */
 
-/*! ./js-modules/test.ts */
-
 /*! ./listToStyles */
 
 /*! ./node_modules/vue-loader/dist/exportHelper.js */
@@ -78,10 +76,6 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-
-/*!********************************!*\
-  !*** ./src/js-modules/test.ts ***!
-  \********************************/
 
 /*!**********************************!*\
   !*** ./src/js-modules/header.js ***!

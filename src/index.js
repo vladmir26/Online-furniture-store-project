@@ -3,7 +3,6 @@ import './js-modules/header';
 import './js-modules/subsription';
 import './js-modules/info-banner';
 import ProductDetails from './js-modules/product-details';
-import './js-modules/test.ts';
 import message from './js-modules/Catalog-products.vue';
 
 createApp(message).mount('#catalog');

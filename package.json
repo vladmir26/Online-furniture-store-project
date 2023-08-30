@@ -5,7 +5,6 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "engine-version",
     "build-prod": "gulp build",
     "start": "gulp start",
     "pug-lint": "gulp lint:template",
@@ -35,7 +34,6 @@
     "browser-sync": "^2.27.11",
     "del": "^6.0.0",
     "editorconfig-checker": "^5.0.1",
-    "engine-version": "^1.0.2",
     "eslint": "^8.43.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
@@ -88,4 +86,3 @@
     "node": ">= 18.17.0"
   }
 }
-
