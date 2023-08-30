@@ -5,6 +5,7 @@ import './js-modules/info-banner';
 import ProductDetails from './js-modules/product-details';
 import message from './js-modules/Catalog-products.vue';
 
+
 createApp(message).mount('#catalog');
 
 $(window).on('load', () => {
@@ -28,3 +29,4 @@ const productDetails = document.querySelector('.js-product-details');
 if (productDetails) {
   new ProductDetails();
 }
+

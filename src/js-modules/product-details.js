@@ -1,5 +1,5 @@
 export default class ProductDetails {
-  constructor() {
+  constructor() { 
     const input = document.querySelector('.product-details__input');
     const plus = document.querySelector('.product-details__plus');
     const minus = document.querySelector('.product-details__minus');
