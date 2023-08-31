@@ -31,6 +31,8 @@
 
 /*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./Catalog-products.vue?vue&type=template&id=7f0766fb */
 
+/*! -!../../node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./Product-details.vue?vue&type=template&id=4dc3825e */
+
 /*! -!../../node_modules/vue-style-loader/index.js!../../node_modules/css-loader/dist/cjs.js!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/sass-loader/dist/cjs.js!../../node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./Catalog-products.vue?vue&type=style&index=0&id=7f0766fb&lang=scss */
 
 /*! ../../node_modules/css-loader/dist/runtime/api.js */
@@ -45,7 +47,11 @@
 
 /*! ./Catalog-products.vue?vue&type=template&id=7f0766fb */
 
+/*! ./Product-details.vue?vue&type=template&id=4dc3825e */
+
 /*! ./js-modules/Catalog-products.vue */
+
+/*! ./js-modules/Product-details.vue */
 
 /*! ./js-modules/header */
 
@@ -95,6 +101,10 @@
 
 /*!********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/js-modules/Product-details.vue ***!
   \********************************************/
 
 /*!*********************************************!*\
@@ -149,6 +159,10 @@
   !*** ./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js ***!
   \*************************************************************************/
 
+/*!**************************************************************************!*\
+  !*** ./src/js-modules/Product-details.vue?vue&type=template&id=4dc3825e ***!
+  \**************************************************************************/
+
 /*!***************************************************************************!*\
   !*** ./src/js-modules/Catalog-products.vue?vue&type=template&id=7f0766fb ***!
   \***************************************************************************/
@@ -164,6 +178,10 @@
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/js-modules/Catalog-products.vue?vue&type=script&lang=js ***!
   \*******************************************************************************************************************************************************************************************************/
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/js-modules/Product-details.vue?vue&type=template&id=4dc3825e ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
 
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1.use!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[8].use[0]!./src/js-modules/Catalog-products.vue?vue&type=template&id=7f0766fb ***!

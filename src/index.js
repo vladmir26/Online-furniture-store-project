@@ -4,9 +4,10 @@ import './js-modules/subsription';
 import './js-modules/info-banner';
 import ProductDetails from './js-modules/product-details';
 import message from './js-modules/Catalog-products.vue';
-
+import mes from './js-modules/Product-details.vue';
 
 createApp(message).mount('#catalog');
+createApp(mes).mount('#product');
 
 $(window).on('load', () => {
   const infoBannerClosed = localStorage.getItem('infoBannerClosed');
@@ -29,4 +30,3 @@ const productDetails = document.querySelector('.js-product-details');
 if (productDetails) {
   new ProductDetails();
 }
-
