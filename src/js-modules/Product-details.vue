@@ -1,13 +1,12 @@
 <template>
   <section
-    id="product"
     class="product-details container js-product-details"
   >
     <div class="product-details__wrapper container__grey-wrapper">
       <div class="product-details__image-inner-wrapper">
         <img
           class="product-details__image"
-          src="../../images/content-image/image-fourteen.png"
+          src="../img/content-image/image-fourteen.png"
           alt="image-fourteen"
         >
       </div>
@@ -74,6 +73,7 @@
             <button
               class="product-details__minus"
               type="button"
+              @click="addMinus"
             >
               -
             </button>
@@ -82,11 +82,12 @@
               class="product-details__input"
               type="number"
               name="product-quantity"
-              value="1"
+              :value="count"
             >
             <button
               class="product-details__plus"
               type="button"
+              @click="addPlus"
             >
               +
             </button>
@@ -97,6 +98,7 @@
             <button
               class="product-details__button"
               type="submit"
+              @click.prevent="addCart, addCountCart"
             >
               Add to cart
             </button>
@@ -116,3 +118,38 @@
     </div>
   </section>
 </template>
+
+<script>
+import { useCountStore } from './store';
+
+export default {
+  data() {
+    return {
+      count: 1,
+      isModalActive: false,
+    };
+  },
+  computed: {
+    limitedCounter() {
+      return Math.max(this.count, 1);
+    },
+  },
+  methods: {
+    addPlus() {
+      this.count += 1;
+    },
+    addMinus() {
+      this.count -= 1;
+      this.count = this.limitedCounter;
+    },
+    addCart() {
+      const countStore = useCountStore();
+      countStore.addCount(this.count);
+    },
+    addCountCart() {
+      const countStore = useCountStore();
+      countStore.addCountCart(this.count);
+    },
+  },
+};
+</script>

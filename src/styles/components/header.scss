@@ -2,11 +2,11 @@
 
 .header {
   padding-top: 40px;
+  transition: padding-top 2s;
 }
 
 .header-animation {
   padding-top: 0;
-  transition: padding-top 2s;
 }
 
 .wrapper {
@@ -33,7 +33,7 @@
   &__product-count {
     position: absolute;
     right: 10px;
-    display: none;
+    display: block;
     width: 17px;
     height: 17px;
     padding: 2px 2px;
