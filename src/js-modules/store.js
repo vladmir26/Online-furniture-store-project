@@ -4,14 +4,12 @@ import { defineStore } from 'pinia';
 export const useCountStore = defineStore('CountStore', {
   state: () => ({
     countVisible: false,
-    count: 1,
+    countAdd: 0,
   }),
   actions: {
-    addCount() {
+    addCount(value) {
       this.countVisible = true;
-    },
-    addCountCart(quantity) {
-      this.count = quantity;
+      this.countAdd += Number(value);
     },
 
   },

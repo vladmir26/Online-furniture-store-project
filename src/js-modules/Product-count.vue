@@ -8,7 +8,7 @@
       v-if="countVisible"
       class="wrapper__product-count"
     >
-      {{ count }}
+      {{ addCount }}
     </div>
     <svg
       class="wrapper__cart"
@@ -64,7 +64,7 @@ export default {
     },
     addCount() {
       const countStore = useCountStore();
-      return countStore.count;
+      return countStore.countAdd;
     },
   },
 };
