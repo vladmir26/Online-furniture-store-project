@@ -6,7 +6,8 @@
   >
     <div
       v-if="countVisible"
-      class="wrapper__product-count"
+      :class="{'wrapper__product-count': true,
+               'wrapper__product-count-active-animation': isActiveAnimation }"
     >
       {{ addCount }}
     </div>
@@ -66,6 +67,14 @@ export default {
       const countStore = useCountStore();
       return countStore.countAdd;
     },
+    isActiveAnimation() {
+      const store = useCountStore();
+      return store.isActiveAnimation;
+    },
+  },
+  created() {
+    const store = useCountStore();
+    store.addCountLocalStorage();
   },
 };
 </script>
@@ -88,5 +97,23 @@ export default {
     border: 2px solid $background-primary;
     border-radius: 50%;
   }
+
+  .wrapper__product-count-active-animation {
+    animation: addToCart 2s 3;
+  }
+
+  @keyframes addToCart {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 
 </style>

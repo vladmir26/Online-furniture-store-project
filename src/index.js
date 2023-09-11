@@ -17,18 +17,4 @@ $(window).on('load', () => {
     $('.info-banner').removeClass('hidden');
     $('#header').addClass('header');
   }
-
-  const storage = localStorage.getItem('count');
-  if (storage) {
-    const productCount = document.querySelector('.wrapper__product-count');
-    productCount.classList.add('wrapper__product-count-active');
-    productCount.classList.remove('wrapper__product-count-active-animation');
-    productCount.textContent = storage;
-  }
 });
-
-/* const productDetails = document.querySelector('.js-product-details');
-
-if (productDetails) {
-  new ProductDetails();
-} */

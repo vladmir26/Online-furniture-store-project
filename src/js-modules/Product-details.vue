@@ -98,7 +98,7 @@
             <button
               class="product-details__button"
               type="submit"
-              @click.prevent="addCart"
+              @click.prevent="addCart(), activeAnimation()"
             >
               Add to cart
             </button>
@@ -165,6 +165,10 @@ export default {
     addCart() {
       const countStore = useCountStore();
       countStore.addCount(this.count);
+    },
+    activeAnimation() {
+      const store = useCountStore();
+      store.animationActive('6000');
     },
   },
 };
