@@ -116,31 +116,13 @@
         </form>
       </div>
     </div>
-    <div class="product-details__modal">
-      <div class="product-details__modal-content">
-        <p class="product-details__modal-text">
-          All products added to cart
-        </p>
-        <div class="product-details__modal-wrapper">
-          <a
-            class="product-details-modal-link"
-            href="#"
-          >
-            <button class="product-details__modal-button-link">
-              Go to cart
-            </button>
-          </a>
-          <button class="product-details__modal-button">
-            Stay on this page
-          </button>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
 <script>
+import { mapStores } from 'pinia';
 import { useCountStore } from './store';
+import ProductDetails from './product-details';
 
 export default {
   data() {
@@ -153,6 +135,10 @@ export default {
     limitedCounter() {
       return Math.max(this.count, 1);
     },
+    ...mapStores(useCountStore),
+  },
+  mounted() {
+    new ProductDetails();
   },
   methods: {
     addPlus() {
@@ -163,91 +149,11 @@ export default {
       this.count = this.limitedCounter;
     },
     addCart() {
-      const countStore = useCountStore();
-      countStore.addCount(this.count);
+      this.countStore.addCount(this.count);
     },
     activeAnimation() {
-      const store = useCountStore();
-      store.animationActive('6000');
+      this.countStore.animationActive('6000');
     },
   },
 };
 </script>
-
-<style lang="scss">
-@import "../styles/components/variables.scss";
-
-.product-details {
-  &__modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-  }
-
-  &__modal-content {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    margin: auto;
-    margin-top: 20%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: $background-third;
-    border: 1px solid #888;
-    transform: translateY(-50%);
-  }
-
-  &__modal-text {
-    text-align: center;
-  }
-
-  &__modal-wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-
-  &__modal-button-link {
-    width: 120px;
-    height: 50px;
-    margin-right: 16px;
-    font-family: $font-secondary;
-    color: $color-primary;
-    background-color: $background-primary;
-  }
-
-  &__modal-button {
-    width: 155px;
-    height: 50px;
-    font-family: $font-secondary;
-    color: $background-primary;
-    background-color: $color-primary;
-  }
-
-  .js-modal-active {
-  z-index: 4;
-}
-
-.js-modal-active-animation {
-  animation: modalFadeIn 0.5s ease forwards;
-}
-
-@keyframes modalFadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-}
-</style>

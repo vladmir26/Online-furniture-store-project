@@ -5,11 +5,11 @@
     href="#"
   >
     <div
-      v-if="countVisible"
+      v-if="countStore.countVisible"
       :class="{'wrapper__product-count': true,
-               'wrapper__product-count-active-animation': isActiveAnimation }"
+               'wrapper__product-count-active-animation': countStore.isActiveAnimation }"
     >
-      {{ addCount }}
+      {{ countStore.countAdd }}
     </div>
     <svg
       class="wrapper__cart"
@@ -55,24 +55,15 @@
 </template>
 
 <script>
+import { mapStores } from 'pinia';
 import { useCountStore } from './store';
 
 export default {
   computed: {
-    countVisible() {
-      const countStore = useCountStore();
-      return countStore.countVisible;
-    },
-    addCount() {
-      const countStore = useCountStore();
-      return countStore.countAdd;
-    },
-    isActiveAnimation() {
-      const store = useCountStore();
-      return store.isActiveAnimation;
-    },
+    ...mapStores(useCountStore),
   },
   created() {
+    this.countStore.addCountLocalStorage();
     const store = useCountStore();
     store.addCountLocalStorage();
   },

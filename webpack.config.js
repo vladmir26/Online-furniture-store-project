@@ -60,7 +60,15 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         loader: 'file-loader',
       },
-
+      {
+        test: /\.pug$/,
+        oneOf: [
+          {
+            exclude: /\.vue$/,
+            use: ['raw-loader', 'pug-plain-loader'],
+          },
+        ],
+      },
     ],
   },
   resolve: {

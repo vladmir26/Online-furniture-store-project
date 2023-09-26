@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 // eslint-disable-next-line import/prefer-default-export
-export const useCountStore = defineStore('CountStore', {
+export const useCountStore = defineStore('count', {
   state: () => ({
     countVisible: false,
     countAdd: 0,

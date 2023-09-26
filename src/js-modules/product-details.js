@@ -23,22 +23,21 @@ export default class ProductDetails {
     });
     addCart.addEventListener('click', (event) => {
       event.preventDefault();
-      productCount.classList.add('wrapper__product-count-active');
-      productCount.textContent = +(productCount.textContent) + (+(input.value));
-      localStorage.setItem('count', productCount.textContent);
+      if (productCount) {
+        productCount.classList.add('wrapper__product-count-active');
+        productCount.textContent = +(productCount.textContent) + (+(input.value));
+        localStorage.setItem('count', productCount.textContent);
+      }
       input.value = 1;
       modal.classList.add('js-modal-active');
       modal.classList.add('js-modal-active-animation');
       body.classList.add('js-scroll');
     });
-    modalbutton.addEventListener('click', () => {
+    modalbutton.addEventListener('click', (event) => {
+      event.preventDefault();
       modal.classList.remove('js-modal-active');
       modal.classList.remove('js-modal-active-animation');
       body.classList.remove('js-scroll');
-      productCount.classList.add('wrapper__product-count-active-animation');
-      setTimeout(() => {
-        productCount.classList.remove('wrapper__product-count-active-animation');
-      }, '6000');
     });
 
     modal.addEventListener('click', (event) => {
@@ -46,10 +45,6 @@ export default class ProductDetails {
         modal.classList.remove('js-modal-active');
         modal.classList.remove('js-modal-active-animation');
         body.classList.remove('js-scroll');
-        productCount.classList.add('wrapper__product-count-active-animation');
-        setTimeout(() => {
-          productCount.classList.remove('wrapper__product-count-active-animation');
-        }, '6000');
       }
     });
   }
