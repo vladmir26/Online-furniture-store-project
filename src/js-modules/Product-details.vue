@@ -57,10 +57,7 @@
             </dd>
           </dl>
         </div>
-        <form
-          action=""
-          method="GET"
-        >
+        <form>
           <label
             class="product-details__title-text"
             for="product-quantity"
@@ -97,23 +94,43 @@
           >
             <button
               class="product-details__button"
-              type="submit"
-              @click.prevent="addCart(), activeAnimation()"
+              type="button"
+              @click.prevent="addCart()"
             >
               Add to cart
             </button>
             <div
               class="product-details__button-link-wrapper"
             >
-              <a
+              <button
                 class="product-details__button-link"
-                href="#"
+                type="button"
               >
                 Save to favorites
-              </a>
+              </button>
             </div>
           </div>
         </form>
+        <dialog id="dialogBox">
+          <section>
+            <p>All products added to cart</p>
+          </section>
+          <footer>
+            <a
+              class="primary"
+              href="/cart"
+            >
+              Go to cart
+            </a>
+            <button
+              type="button"
+              class="secondary"
+              @click="closeDialog()"
+            >
+              Stay on this page
+            </button>
+          </footer>
+        </dialog>
       </div>
     </div>
   </section>
@@ -122,7 +139,6 @@
 <script>
 import { mapStores } from 'pinia';
 import { useCountStore } from './store';
-import ProductDetails from './product-details';
 
 export default {
   data() {
@@ -137,9 +153,6 @@ export default {
     },
     ...mapStores(useCountStore),
   },
-  mounted() {
-    new ProductDetails();
-  },
   methods: {
     addPlus() {
       this.count += 1;
@@ -149,11 +162,63 @@ export default {
       this.count = this.limitedCounter;
     },
     addCart() {
+      const dialogBoxId = document.getElementById('dialogBox');
+      dialogBoxId.showModal();
       this.countStore.addCount(this.count);
-    },
-    activeAnimation() {
       this.countStore.animationActive('6000');
+    },
+    closeDialog() {
+      const dialogBoxId = document.getElementById('dialogBox');
+      dialogBoxId.close();
     },
   },
 };
 </script>
+
+<style lang="scss">
+@import "../styles/components/variables.scss";
+
+  html:has(dialog[open]:modal) {
+    overflow: hidden;
+  }
+  #dialogBox {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: $background-third;
+    border: 1px solid #888;
+    &::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    section {
+      text-align: center;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .primary {
+      padding: 1rem 2rem;
+      margin-right: 16px;
+      font-family: 'Satoshi';
+      color: #fff;
+      background-color: #2a254b;
+    }
+    .secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 178px;
+      height: 56px;
+      font-family: 'Satoshi';
+      opacity: 1;
+    }
+ }
+</style>
