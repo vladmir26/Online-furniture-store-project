@@ -173,52 +173,68 @@ export default {
     },
   },
 };
+HTMLDialogElement.prototype.triggerShow = HTMLDialogElement.prototype.showModal;
+// eslint-disable-next-line func-names
+HTMLDialogElement.prototype.showModal = function () {
+  this.triggerShow();
+  // eslint-disable-next-line consistent-return
+  this.onclick = (event) => {
+    const rect = this.getBoundingClientRect();
+    if (event.clientY < rect.top || event.clientY > rect.bottom) return this.close();
+    if (event.clientX < rect.left || event.clientX > rect.right) return this.close();
+  };
+};
 </script>
 
 <style lang="scss">
 @import "../styles/components/variables.scss";
 
-  html:has(dialog[open]:modal) {
-    overflow: hidden;
-  }
-  #dialogBox {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    margin: auto;
-    margin-top: 20%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: $background-third;
-    border: 1px solid #888;
-    &::backdrop {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    section {
-      text-align: center;
-    }
+html:has(dialog[open]:modal) {
+  overflow: hidden;
+}
 
-    footer {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-    .primary {
-      padding: 1rem 2rem;
-      margin-right: 16px;
-      font-family: 'Satoshi';
-      color: #fff;
-      background-color: #2a254b;
-    }
-    .secondary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 178px;
-      height: 56px;
-      font-family: 'Satoshi';
-      opacity: 1;
-    }
- }
+#dialogBox {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: $background-third;
+  border: 1px solid #888;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  section {
+    text-align: center;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .primary {
+    padding: 1rem 2rem;
+    margin-right: 16px;
+    font-family: 'Satoshi';
+    color: #fff;
+    background-color: #2a254b;
+  }
+
+  .secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 178px;
+    height: 56px;
+    font-family: 'Satoshi';
+    opacity: 1;
+  }
+}
 </style>
