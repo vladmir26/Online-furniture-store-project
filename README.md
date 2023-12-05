@@ -1,3 +1,4 @@
+Ссылка на сайт: https://vladmir26.github.io/Online-furniture-store-project/dist
 <h1>Online-furniture-store-project</h1>
 
 <h2>Description</h2> 
